@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/mainStyle.css" type="text/css">
+    <script src="../js/mainScript.js" defer type="text/javascript"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header> <!--헤더, 로고-->
+            <a href="#">
+                <img src="../image/logo.png" alt="logo">
+            </a>
+        </header>
+        <main> <!--메인-->
+            <div class="search"> <!--검색창-->
+                <form>
+                    <input type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
+                    <div class="btn">
+                        <button type="submit"> <!--확인btn-->
+                            <img src="../image/searchSubmit.png">
+                        </button>
+                        <button type="button">
+                            <img src="../image/mic.png" alt="mic">
+                        </button>
+                    </div>
+                </form>
+                <div class="bubble">
+                    <img src="../image/bubble.png">
+                    <span>버튼을 눌러 원하시는 상품을 말해주세요!</span>
+                </div>
+            </div>
+            <div class="recommand">
+                <span>추천 상품</span>
+                <div class="product">
+                    <div class="nextBtn">
+                        <div><img src="../image/left.png"></div>
+                        <div><img src="../image/right.png"></div>
+                    </div>                    <ul class="list">
+                        <li>
+                            <div></div> <!--이미지-->
+                            <span class="name">product1</span>
+                            <span class="price">1,000원</span>
+                        </li>
+                        <li>
+                            <div></div> <!--이미지-->
+                            <span class="name">product2</span>
+                            <span class="price">1,000원</span>
+                        </li>
+                        <li>
+                            <div></div> <!--이미지-->
+                            <span class="name">product3</span>
+                            <span class="price">1,000원</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="topMenu">
+                <div>배송 조회하기</div>
+                <div>내 정보 확인하기</div>
+            </div>
+            <div class="botMenu">
+                <div>즐겨찾기 가기</div>
+                <div>장바구니 가기</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
