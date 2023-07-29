@@ -6,7 +6,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # 상품 모델
 class Product(models.Model):
     name = models.CharField(max_length=50, db_index=True) # 상품 이름
-    slug = models.SlugField(max_length=50, db_index=True) # 슬러그
+
+    slug = models.SlugField(max_length=50, db_index=True, allow_unicode=True) # 슬러그
 
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, default='default.png') # 상품 이미지
     description = models.TextField(blank=True) # 상품 설명
@@ -14,7 +15,8 @@ class Product(models.Model):
 
     delivery_date = models.IntegerField() # 배송일
 
-    price = models.DecimalField(max_digits=10, decimal_places=2) # 상품 가격
+
+    price = models.IntegerField() # 상품 가격
     stock = models.PositiveIntegerField() # 상품 재고
 
     available_display = models.BooleanField('Display', default=True) # 상품 전시
