@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', include('shop.urls')),
     path('', include('shop.urls')),
+    path('accounts/', include('shop.urls'))
 ]
 
 # 미디어 파일
