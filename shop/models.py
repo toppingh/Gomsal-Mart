@@ -40,3 +40,6 @@ class Discount(models.Model):
     discount_price = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100000)])
     active = models.BooleanField()
 
+#회원가입
+
+

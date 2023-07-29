@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block contents %}
+    <link rel="stylesheet" href="{% static 'css/mainStyle.css' %}" type="text/css">
+    <script src="{% static 'js/mainScript.js' %}" defer type="text/javascript"></script>
+</head>
+
+<body>
+    <
+    <div id="wrap">
+        <header> <!--헤더, 로고-->
+            <a href="#">
+=======
 {% load static %}
 <html lang="en">
 <head>
@@ -13,12 +31,19 @@
     <div id="wrap">
         <header> <!--헤더, 로고-->
             <a href="/">
+>>>>>>> 17ffcca5ab92c8c857a96369ccbc68a7acc6a956
                 <img src="{% static 'image/logo.png' %}" alt="logo">
             </a>
         </header>
         <main> <!--메인-->
+<<<<<<< HEAD
+            <a href="{% url 'shop:login' %}">로그인</a>
+            <div class="search"> <!--검색창-->
+                <form>
+=======
             <div class="search"> <!--검색창-->
                 <form> <!-- 메소드, enctype 추가 예정 -->
+>>>>>>> 17ffcca5ab92c8c857a96369ccbc68a7acc6a956
                     <input type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
                     <div class="btn">
                         <button type="submit"> <!--확인btn-->
@@ -40,6 +65,13 @@
                     <div class="nextBtn">
                         <div><img src="{% static 'image/left.png' %}"></div>
                         <div><img src="{% static 'image/right.png' %}"></div>
+<<<<<<< HEAD
+                    </div>                    <ul class="list">
+                        <li>
+                            <div></div> <!--이미지-->
+                            <span class="name">product1</span>
+                            <span class="price">1,000원</span>
+=======
                     </div>
                     <ul class="list">
                         <li>
@@ -47,6 +79,7 @@
                             <div><img src="{{product.image.url}}"></div> <!--이미지-->
                             <span class="name">{{product.name}}</span>
                             <span class="price">{{product.price}}</span>
+>>>>>>> 17ffcca5ab92c8c857a96369ccbc68a7acc6a956
                         </li>
                         <li>
                             <div></div> <!--이미지-->
@@ -58,7 +91,10 @@
                             <span class="name">product3</span>
                             <span class="price">1,000원</span>
                         </li>
+<<<<<<< HEAD
+=======
                         {% endfor %}
+>>>>>>> 17ffcca5ab92c8c857a96369ccbc68a7acc6a956
                     </ul>
                 </div>
             </div>
@@ -74,6 +110,10 @@
             </div>
         </footer>
     </div>
+<<<<<<< HEAD
+    {% endblock %}
+=======
 {% endblock %}
+>>>>>>> 17ffcca5ab92c8c857a96369ccbc68a7acc6a956
 </body>
 </html>
