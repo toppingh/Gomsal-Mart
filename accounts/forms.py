@@ -1,8 +1,6 @@
 from django import forms
-from . import models
+from shop import models
 
-app_name = 'shop'
-...
 # class UserForm(forms.ModelForm):
 #     class Meta:
 #         model = User
