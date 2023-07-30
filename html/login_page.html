@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>다시 해보는 로그인 페이지</title>
-  <link rel="stylesheet" href="login_page.css">
-  <script src="login.js"></script>
+  <title>로그인 페이지</title>
+  <link rel="stylesheet" href="../css/login_page.css">
 </head>
 <body>
-  <div class="logo"><img src="logo_image.png" width="25%"></div>
-  <div class="name"><p>전화번호 / 별명 &nbsp; </p><input type="text" id="name"></div>
-  <div class="pw"><p>비밀번호 &nbsp; </p><input type="password" id="password"></div>
-  <div class="change_pw"><a class="change_pw_btn" href="메인페이지">비밀번호 변경</a></div>
-  <div class="btn_container"><button class="start_btn"><p>시작하기</p></button></div>
-  <div class="first">처음이신가요?</div>
-  <div class="btn_container"><button class="login_btn"><p>회원가입하기</p></button></div>
+  <div class="logo">
+    <img src="../image/login_logo.png" alt="login_logo" width="25%">
+  </div>
+  <form>
+    <div class="name">
+      <input type="text" placeholder="전화번호 / 별명을 입력하세요" id="name">
+    </div>
+    <div class="pw">
+      <input type="password" placeholder="비밀번호를 입력하세요" id="password">
+    </div>
+    <a href="메인페이지" class="change_pw">비밀번호 변경</a>
+    <button class="start_btn">시작하기</button>
+    <div class="first">처음이신가요?</div>
+    <button class="join_btn">회원가입하기</button>
+  </form>
 </body>
 </html>
