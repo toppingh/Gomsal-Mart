@@ -19,7 +19,6 @@ class Product(models.Model):
 
     delivery_date = models.IntegerField() # 배송일
 
-
     price = models.IntegerField() # 상품 가격
     stock = models.PositiveIntegerField() # 상품 재고
 
@@ -44,11 +43,4 @@ class Discount(models.Model):
     discount_price = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100000)])
     active = models.BooleanField()
 
-
-
-
-
-class User(forms.UserForm):
-    class Meta:
-        forms = UserForm
-        fields = ('username', 'password1', 'password2', 'phonenum', 'birthY', 'birthM', 'birthD')
+# 별점 추가 예정 (외래키)
