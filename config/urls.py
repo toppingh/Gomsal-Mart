@@ -23,9 +23,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('cart/', include('cart.urls')),
     path('login/', include('shop.urls')),
+    path('signup/', include('shop.urls')),
     path('', include('shop.urls')),
-    path('signup/', include('shop.urls'))
+
 ]
 
 # 미디어 파일
