@@ -10,6 +10,13 @@
 </head>
 <body>
 {% block content %}
+{% if Account.is_authenticated %}
+<a><span>{{ Account.username }}</span>님 반갑습니다!</a>
+<a href="{% url 'accounts:logout' %}">로그아웃</a>
+{% else %}
+<a href="{% url 'accounts:login' %}">로그인</a>
+<a href="{% url 'accounts:signup' %}">회원가입</a>
+{% endif %}
     <div id="wrap">
         <header> <!--헤더, 로고-->
             <a href="#">

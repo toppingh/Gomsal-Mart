@@ -141,3 +141,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'image')
 
 # 카트 아이디
 CART_ID = 'cart_in_session'
+
+AUTH_USER_MODEL = 'accounts.Account'
