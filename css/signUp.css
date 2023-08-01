@@ -45,7 +45,7 @@ body {
     box-sizing: border-box;
     width: 50%;
     height: 100%;
-	font-family: 'HakgyoansimWoojuR';
+   font-family: 'HakgyoansimWoojuR';
     color : #2A343D;
     background-color: rgb(255, 248, 248);
 }
@@ -70,12 +70,13 @@ body {
     width: 100%;
     height: 100%;
 
+    /* background-color: aqua; */
 
 }
 
 #title{
-    width: 20%;
-    height: 18%;
+    width: 23%;
+    height: 25%;
 
     border: 1px solid rgb(255, 194, 173);
     border-radius: 2px;
@@ -89,7 +90,7 @@ body {
     font-weight: 600;
 }
 /* 인풋부모 */
-.name, .birth, .phoneNum, .id, .password, .agree{
+.name, .birth, .phoneNum, .id, .password, .agree , .password2{
     width: 100%;
     height: 20%;
 
@@ -99,7 +100,7 @@ body {
 
 }
 /* 인풋박스 */
-#name,#phoneNum,#id,#password,#agree{
+#name,#phoneNum,#id,#password,#agree, #password2{
 
     width: 100%;
     height: 30%;
@@ -144,14 +145,36 @@ input{
     position: relative;
     top: 1%;
 
+
 }
 
 #agree p{
     width: 100%;
     height: auto;
     text-align: center;
-    /* background-color: aqua; */
-
     font-weight: bold;
     font-size: 1rem;
 }
+
+
+
+
+/* 스마트폰 미디어쿼리 */
+/* @media screen and (max-width : 576px) {
+    body{
+        display: flex;
+        flex-direction: column; /* 수직 방향으로 요소들을 배치 */
+        /* justify-content: center;
+        align-items: center;
+
+        box-sizing: border-box;
+        width: 400px;
+        height: auto;
+    }
+
+    #birth{
+    padding: 20px ;
+    width: 100%;
+    border-style: none;
+} */
+/* } */

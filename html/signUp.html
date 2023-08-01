@@ -4,15 +4,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>곰살마트 : 회원가입</title>
-    <link rel="stylesheet" href="signUp.css">
+    <link rel="stylesheet" href="../css/signUp.css">
 
 </head>
 <body>
-    <script src="signUp.js"></script>
+    <script src="../js/signUp.js"></script>
 
 
     <nav class="logo">
-        <img src="곰살페이지로고.png" alt="">
+        <img src="../img/곰살페이지로고.png" alt="">
     </nav>
 
   
@@ -26,7 +26,8 @@
                     <p>이름</p>
                 </div>
                 <input id="name" type="text" placeholder="홍 길 동">
-
+                <!-- 이름 조건오류 -->
+                <div id="nameError" class="error"></div>
             </div>
 
             <div class="birth" id="birthChk">
@@ -54,7 +55,8 @@
                     <p>별명</p>
                 </div>
                 <input id="id" type="text" onkeyup="checkReg(event)"  placeholder="2글자 이상 별명을 적어주세요" >
-
+                <!-- 별명 조건오류 -->
+                <div id="idError" class="error"></div>
             </div>
 
             <div class="password">
@@ -62,8 +64,17 @@
                     <p>비밀번호</p>
                 </div>
                 <input id="password" type="text" placeholder="숫자 6자리를 입력해 주세요." maxlength="6">
+            </div>    
 
-            </div>   
+            <div class="password2">
+                <div id="title">
+                    <p>비밀번호 재확인</p>
+                </div>
+                <input id="password2" type="text" placeholder="숫자 6자리를 입력해 주세요." maxlength="6">
+                <span id="confirmMsg" onchange="isSame()"></span>
+            </div>
+
+                
             <button class= "agree" id="agree" disabled onclick="signUpCheck()">
                 <p>가입하기</p>
             </button>
