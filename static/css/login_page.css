@@ -11,42 +11,64 @@ html,body {
   font-family: 'HakgyoansimWoojuR';
   width: 100%;
   height: 100%;
-  
+  background-color: #FDAF96;
+  color: #2A343D;
+  font-size:16px;
 }
 
-body {
-  color: #2A343D;
+form{
+  width: 100%;
+  height: 100%;
+  font-size:16px;
 }
 
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 8%;
+  position: relative;
+  top: 10%;
 } 
 
 .name, .pw  {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-bottom: #2A343D solid 1px;
-  margin: 0 auto;
-  
 }
 
-.name {
-  padding: 2%;
-  width: 76%;
+input{
+  border: none;
+  background: transparent;
+  width: 40%;
+ }
+ 
+ input:focus{
+   outline:none; /*인풋을 클릭했을 때 생기는 테두리 없앰*/
+ }
+
+ input::placeholder {
+  font-family: 'HakgyoansimWoojuR';
+  font-size: 18px;
 }
 
-.pw {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  width: 80%;
+.name{
+  position: relative;
+  top: 23%;
+  width: 50%;
+  left: 25.5%;
 }
 
-.name p, .pw p{
-  font-size: 20px; /*%가 안딤*/
+.pw{
+  position: relative;
+  top: 33%;
+  width: 50%;
+  left: 25.5%;
+}
+
+.change_pw {
+  position: relative;
+  top: 36%;
+  left: 46.5%;
+  text-decoration: none;
+  font-size: 120%;
 }
 
 /*메인페이지 주소를 넣으면 a:visited 태그가 활성화*/
@@ -54,54 +76,65 @@ a:visited{
   color: #2A343D;
 }
 
-.change_pw {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 2%;
-  padding-bottom: 4%;
-  font-size: 18px;
-  
+a:active{
+  color: #fff;
+ }
+ 
+a:hover{
+  color: #fff;
 }
 
-
-.change_pw_btn {
-  text-decoration: none;
-  
-}
-
-.btn_container {
-  display: flex;
-  border: 1px solid #2A343D;
-  width: 15%;
-  height: 5%;
-  justify-content: center;
-  align-items: center;
-  margin: 0.5rem auto;
-  padding: 0.8rem 2.4rem;
-  background-color: #FFDEDE;
-}
-
-.start_btn, .login_btn {
-  all: initial; /* 모든 스타일 초기화 */
+button{
   font-family: 'HakgyoansimWoojuR', sans-serif;
   color: #2A343D;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 21%;
+}
+
+button:active{
+ color: #fff;
+}
+
+button:hover{
+  color: #fff;
+}
+
+.start_btn{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 57%;
+  left: 40%;
+  font-size: 160%;
+}
+
+.join_btn{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 65%;
+  left: 40%;
+  font-size: 160%;
 }
 
 .first {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%;
+  position: relative;
+  top: 64%;
+  left: 47%;
+  font-size: 110%;
 }
 
 
 /* 미디어 쿼리 데스크톱 화면에 대한 스타일 */
-@media screen and (min-width: 1024px) {
+/*@media screen and (min-width: 1024px) {
   body {
     /*overflow: hidden; /* 스크롤 없애기 */
-  }
-  
+  /*}
+  /*
   .name p, .pw p {
     font-size: 200%;
   }
@@ -118,3 +151,5 @@ a:visited{
     font-size: 200%;
   }
 }
+*/
+>>>>>>> b9a4f3cbfb371cdb470b139d4059253071dac108:css/login_page.css

@@ -5,27 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static '/css/mainStyle.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/mainStyle.css' %}" type="text/css">
     <script src="{% static 'js/mainScript.js' %}" defer type="text/javascript"></script>
 </head>
 <body>
 {% block content %}
-{% if Account.is_authenticated %}
-<a><span>{{ Account.username }}</span>님 반갑습니다!</a>
-<a href="{% url 'accounts:logout' %}">로그아웃</a>
-{% else %}
-<a href="{% url 'accounts:login' %}">로그인</a>
-<a href="{% url 'accounts:signup' %}">회원가입</a>
-{% endif %}
     <div id="wrap">
         <header> <!--헤더, 로고-->
-            <a href="#">
+            <a href="/">
                 <img src="{% static 'image/logo.png' %}" alt="logo">
             </a>
         </header>
         <main> <!--메인-->
             <div class="search"> <!--검색창-->
-                <form> <!-- post메소드, enctype 추가 예정 -->
+                <form method="post" enctype="multipart/form-data">
                     <input type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
                     <div class="btn">
                         <button type="submit"> <!--확인btn-->
@@ -36,9 +29,8 @@
                         </button>
                     </div>
                 </form>
-                <div class="bubble">
+                <div class="bubble hid">
                     <img src="{% static 'image/bubble.png' %}">
-                    <span>버튼을 눌러 원하시는 상품을 말해주세요!</span>
                 </div>
             </div>
             <div class="recommand">
@@ -47,28 +39,16 @@
                     <div class="nextBtn">
                         <div><img src="{% static 'image/left.png' %}"></div>
                         <div><img src="{% static 'image/right.png' %}"></div>
-                    </div>
-                    {% for product in products %}
+                    </div>                    
                     <ul class="list">
+                        {% for product in products %}
                         <li>
-                            <div class="card">
-                                <img src="{{product.image.url}}" style="width:100%"><!--이미지-->
-                                <span class="name"><a href="">{{product.name}}</a></span>
-                                <span class="price">{{product.price}}</span>
-                            </div>
+                            <img src="{{product.image.url}}"> <!--이미지-->
+                            <span class="name">{{product.name}}</span>
+                            <span class="price">{{product.price}}</span>
                         </li>
-<!--                        <li>-->
-<!--                            <div><img src="{{product.image.url}}" style="width:100%"></div> &lt;!&ndash;이미지&ndash;&gt;-->
-<!--                            <span class="name">{{product.name}}</span>-->
-<!--                            <span class="price">{{product.price}}</span>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <div></div> &lt;!&ndash;이미지&ndash;&gt;-->
-<!--                            <span class="name">product3</span>-->
-<!--                            <span class="price">1,000원</span>-->
-<!--                        </li>-->
+                        {% endfor %}
                     </ul>
-                    {% endfor %}
                 </div>
             </div>
         </main>

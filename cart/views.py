@@ -32,5 +32,5 @@ def detail(request):
 
     # 노출될 상품을 장바구니 객체인 cart로부터 가져온다.
     for product in cart:
-        # 상품의 수량 (수정)긴 = 폼을 이용해서 상품마다 하나씩 추가하는데 수정하는대로 반영해야 하므로 is_update=True
+        # 상품의 수량 (수정) = 폼을 이용해서 상품마다 하나씩 추가하는데 수정하는대로 반영해야 하므로 is_update=True
         product['quantity_form'] = AddCartForm(initial={'quantity':product['quantity'], 'is_update':True})
