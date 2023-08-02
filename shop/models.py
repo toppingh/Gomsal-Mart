@@ -2,8 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-from accounts import forms
-from accounts.models import Account
+# from accounts import forms
+# from accounts.models import Account
 
 
 # Create your models here.
