@@ -83,7 +83,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_staff    = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    object = MyAccountManager()
+    objects = MyAccountManager()
 
     USERNAME_FIELD = 'phonenum'
     REQUIRED_FIELDS = ['username', 'nickname', 'birthY', 'birthM', 'birthD']
