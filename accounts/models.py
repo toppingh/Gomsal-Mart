@@ -15,16 +15,6 @@ class IntegerRangeField(models.IntegerField):
         defaults.update(kwargs)
         return super(IntegerRangeField, self).formfield(**defaults)
 
-
-# class User(models.Model):
-#     username = models.CharField(max_length=80)
-#     phonenum = IntegerRangeField(max_value=13)
-#     password1 = models.CharField(max_length=6)
-#     password2 = models.CharField(max_length=6)
-#     birthY = IntegerRangeField(max_value=2100)
-#     birthM = IntegerRangeField(max_value=12)
-#     birthD = IntegerRangeField(max_value=32)
-
 class MyAccountManager(BaseUserManager):
     # 일반 멤버
     def create_user(self, nickname, username, phonenum, birthY, birthM, birthD, password=None):
@@ -53,15 +43,11 @@ class MyAccountManager(BaseUserManager):
         return user
 
     # 관리자
-    def create_superuser(self, nickname, username, phonenum, birthY, birthD, birthM, password):
+    def create_superuser(self, phonenum, password):
         user = self.create_user(
             phonenum=phonenum,
-            username=username,
-            nickname=nickname,
             password=password,
-            birthY=birthY,
-            birthM=birthM,
-            birthD=birthD,
+
         )
         user.is_admin = True
         user.is_staff = True
