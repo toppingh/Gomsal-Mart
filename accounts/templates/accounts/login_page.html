@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% load static %}
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>로그인 페이지</title>
-  {% block contents %}
-  <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
-  <script src="{% static 'js/login.js' %}"></script>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    {% block content %}
+    <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
 </head>
 <body>
-  <form method ="POST" enctype="multipart/form-data">
+<form method="POST" action="{% url 'accounts:login' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {% include 'shop/login_erros.html' %}
-  <div class="logo">
-    <img src="{% static 'image/logo.png' %}" width="25%"></div>
-  <div class="name"><p>전화번호 &nbsp; </p>
-    <input type="text" id="name">
-  </div>
-  <div class="pw"><p>비밀번호 &nbsp; </p>
-    <input type="password" id="password">
-  </div>
+    {% include 'accounts/login_errors.html' %}
+    <div class="logo">
+        <img src="{% static 'image/logo.png' %}" width="25%"></div>
+    <div class="name"><p>전화번호 &nbsp; </p>
+        <input type="text" id="name" name="username" value="{{form.phonenum.value|default_if_none:''}}">
+    </div>
+    <div class="pw"><p>비밀번호 &nbsp; </p>
+        <input type="password" id="password" name="password" value="{{form.password.value|default_if_none:''}}">
+    </div>
 
-  <div class="change_pw"><a class="change_pw_btn" href="">비밀번호 변경</a></div>
+    <div class="change_pw"><a class="change_pw_btn" href="">비밀번호 변경</a></div>
 
-  <div class="btn_container">
-    <button class="start_btn" type="submit">
-      <p>시작하기</p>
-    </button>
-  </div>
+    <div class="btn_container">
+        <button class="start_btn" type="submit">
+            <p>시작하기</p>
+        </button>
+    </div>
 
-  </form>
-  <div class="first">처음이신가요?</div>
-  <div class="btn_container"> <a href="{% url 'accounts:signup' %}"><button class="login_btn" ><p>회원가입</p></button></a></div>
-  {% endblock %}
+</form>
+<div class="first">처음이신가요?</div>
+<div class="btn_container"><a href="{% url 'accounts:signup' %}">
+    <button class="login_btn"><p>회원가입</p></button>
+</a></div>
+{% endblock %}
 </body>
 </html>

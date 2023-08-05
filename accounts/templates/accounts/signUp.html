@@ -12,7 +12,7 @@
 
 
     <nav class="logo">
-        <img src="{% static 'image/곰살마트_페이지로고.png' %}" alt="logo" href="{% url 'shop:main' %}">
+        <img src="{% static 'image/곰살페이지로고.png' %}" alt="logo" href="{% url 'shop:main' %}">
     </nav>
 
   
@@ -36,7 +36,7 @@
 
         <div class="phoneNum">
             <div id="phone">전화번호</div>
-            <input name="phonenum" id="phoneNum" type="text" oninput="#" placeholder="010-XXXX-XXXX" maxlength="11" required>
+            <input name="phonenum" id="phoneNum" type="text" oninput="#" placeholder="010XXXXXXXX" maxlength="11" required>
         </div>
 
         <div class="id">
@@ -46,7 +46,7 @@
 
         <div class="password">
             <div id="pass">비밀번호</div>
-            <input name="password1" id="password" type="password" placeholder="숫자 6자리를 입력해 주세요." required>
+            <input name="password1" id="password" type="password" placeholder="문자+숫자 8자리를 입력해 주세요." required>
         </div>
 
         <div class="password">
@@ -54,7 +54,7 @@
             <input name="password2" id="password" type="password" placeholder="비밀번호 확인" required>
         </div>
 
-        <button type="submit" class="agree" id="agree" onclick="formCheck()" value="Sign Up">가입하기</button>
+        <button type="submit" class="agree" id="agree" value="Sign Up">가입하기</button>
 
          {% for field in registration_form %}
                 <p>
