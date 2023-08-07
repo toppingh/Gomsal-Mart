@@ -160,11 +160,11 @@ input{
 
 
 /* 스마트폰 미디어쿼리 */
-/* @media screen and (max-width : 576px) {
+@media screen and (max-width : 576px) {
     body{
         display: flex;
         flex-direction: column; /* 수직 방향으로 요소들을 배치 */
-        /* justify-content: center;
+        justify-content: center;
         align-items: center;
 
         box-sizing: border-box;
@@ -176,5 +176,5 @@ input{
     padding: 20px ;
     width: 100%;
     border-style: none;
-} */
-/* } */
+}
+}
