@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page(임시)</title>
+</head>
+<body>
+{% for user in users %}
+
+<h1>{{ user.phonenum }} 회원님, 환영합니다!</h1>
+
+<p>닉네임</p> : {{ user.nickname }}
+<p>생일</p> : {{ user.birthY }} 년 {{ user.birthM }} 월 {{ user.birthD }} 일
+<p></p>
+  <a href="{% url 'accounts:logout' %}">로그아웃</a>
+
+<h3>작성한 리뷰 목록</h3>
+<a href="#"> </a>
+        <p></p>
+{% endfor %}
+</body>
+</html>
