@@ -12,6 +12,7 @@ submitBtn.onclick = function(){
     let context = document.querySelector('.output').innerText;
     document.querySelector('#modal').classList.add('hide');
     document.querySelector('.search input').value = context;
+    document.querySelector('.output').innerText = "";
 }
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
