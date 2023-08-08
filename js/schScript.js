@@ -23,10 +23,13 @@ let removeSchFocus = document.querySelector('.remove_sch_focus');
 removeSchFocus.onclick = function(){
     document.querySelector('#wrap').classList.remove('hide');
     document.querySelector('.sch_focus').classList.add('hide');
+    document.querySelector('.search input').value = "";
 }
 //메인 검색창 클릭 시 포커스 이동
 let searchBar = document.querySelector('.search input');
 searchBar.onclick = function(){
+    let prevInfo = searchBar.value;
     document.querySelector('#wrap').classList.add('hide');
     document.querySelector('.sch_focus').classList.remove('hide');
+    document.querySelector('.header_search input').value = prevInfo;
 }
