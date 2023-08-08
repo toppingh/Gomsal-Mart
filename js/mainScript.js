@@ -31,7 +31,7 @@ function makeClone(){
     //배치 완료 후
     setTimeout(function(){
         slide.classList.add('animate');
-    }, 100);    //1초 뒤에 함수 내용 실행
+    }, 1000);    //1초 뒤에 함수 내용 실행
 }
 function ModifySlideWidth(){
     let currentLists = document.querySelectorAll('.list li');
