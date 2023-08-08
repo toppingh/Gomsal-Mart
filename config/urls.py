@@ -26,6 +26,7 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('accounts/', include('accounts.urls')),
     path('', include('shop.urls')),
+    path('comment/', include('comment.urls'))
 ]
 
 # 미디어 파일

@@ -17,4 +17,8 @@ def detail(request, id, product_slug=None):
     add_to_cart = AddCartForm(initial={'quantity':1})
     return render(request, 'shop/detail.html', {'product':product, 'add_to_cart':add_to_cart})
 
+#임시 detail
+def detail2(request):
+    return render(request, 'shop/detail.html')
+
 
