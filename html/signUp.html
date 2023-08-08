@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <script src="../js/signUp.js"></script>
+    <script src="../js/signUp.js" defer></script>
 
 
     <nav class="logo">
@@ -25,22 +25,23 @@
                 <div id="title" maxlength="4" >
                     <p>이름</p>
                 </div>
-                <input id="name" type="text" placeholder="홍 길 동">
+                <input id="name" type="text" placeholder="홍 길 동" onkeyup="checkReg(event)">
                 <!-- 이름 조건오류 -->
-                <div id="nameError" class="error"></div>
+                <div id="nameError" class="error">이름이 없습니다</div>
             </div>
+            
 
             <div class="birth" id="birthChk">
 
                 <p id="title">생년월일</p>
 
                 <div class="birthInput">
-                    <input id="birth" type="text" placeholder="19XX" maxlength="4">
-                    <input id="birth" type="text" placeholder="x월" maxlength="2">
-                    <input id="birth" type="text" placeholder="x일" maxlength="2">       
+                    <input class="birthIn" id="birth1" type="text" placeholder="19XX" maxlength="4">
+                    <input class="birthIn" id="birth2" type="text" placeholder="x월" maxlength="2">
+                    <input class="birthIn" id="birth3" type="text" placeholder="x일" maxlength="2">       
                 </div>
+                <div id="birthError" class="error">생년월일이 없습니다</div>
 
-                
             </div>
 
             <div class="phoneNum">
@@ -48,6 +49,8 @@
                     <p>전화번호</p>
                 </div>
                 <input id="phoneNum" type="text" oninput="autoHyphen(this)" placeholder="010-XXXX-XXXX" maxlength="13" >
+                <div id="phoneNumError" class="error">전화번호가 없습니다</div>
+
             </div>
 
             <div class="id">
@@ -56,26 +59,28 @@
                 </div>
                 <input id="id" type="text" onkeyup="checkReg(event)"  placeholder="2글자 이상 별명을 적어주세요" >
                 <!-- 별명 조건오류 -->
-                <div id="idError" class="error"></div>
+                <div id="idError" class="error">별명이 없습니다</div>
             </div>
 
             <div class="password">
                 <div id="title">
                     <p>비밀번호</p>
                 </div>
-                <input id="password" type="text" placeholder="숫자 6자리를 입력해 주세요." maxlength="6">
+                <input id="password" type="text" placeholder="숫자 6자리를 입력해 주세요." >
+                <div id="passwordError" class="error">비밀번호를 입력하세요</div>
             </div>    
 
-            <div class="password2">
+            <div class="passwordCheck">
                 <div id="title">
                     <p>비밀번호 재확인</p>
                 </div>
-                <input id="password2" type="text" placeholder="숫자 6자리를 입력해 주세요." maxlength="6">
-                <span id="confirmMsg" onchange="isSame()"></span>
+                <input id="passwordCheck" type="text" placeholder="숫자 6자리를 입력해 주세요." >
+                <div id="passwordCheckError" class="error">비밀번호가 일치하지 않습니다</div>
+
             </div>
 
                 
-            <button class= "agree" id="agree" disabled onclick="signUpCheck()">
+            <button class="agree" id="agree" type="button">
                 <p>가입하기</p>
             </button>
        

@@ -66,10 +66,6 @@ body{
     font-size: 1.2rem;
     
 }
-
-
-
-
 /* 상품 이미지 */
 .m-img{
     width: 100%;
@@ -107,7 +103,7 @@ body{
     font-size: 1.2rem;
     font-family: 'HakgyoansimWoojuR';
     font-weight: bold;
-    background-color: rgb(255, 184, 160);
+    background-color: rgb(253, 255, 160);
     letter-spacing: 2px;
 }
 .middle-info{
@@ -192,6 +188,7 @@ body{
 .gallery-a{
     position: relative;
     left: 50%;
+    text-decoration:none;
 }
 
 .notice>ul, .gallery>ul{
@@ -237,6 +234,10 @@ body{
 .tap>li.active div{
     background-color: #ffffff;
     z-index: 2;
+}
+.active > a{
+    text-decoration:none;
+
 }
 /* 수량확인 */
 .num{
