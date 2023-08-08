@@ -70,3 +70,4 @@ class AccountAuthForm(forms.ModelForm):
             password = self.cleaned_data['password']
             if not authenticate(phonenum=phonenum, password=password):
                 raise forms.ValidationError("로그인 실패")
+

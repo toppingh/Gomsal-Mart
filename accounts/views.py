@@ -9,6 +9,7 @@ from accounts.forms import AccountAuthForm, RegistrationForm
 import sys
 
 from accounts.models import Account
+from comment.models import Comment
 
 sys.setrecursionlimit(9999)
 
@@ -83,6 +84,9 @@ def userinfo(request, pk):
     user = Account.objects.get(pk=pk)
     profile = Account.objects.get(username=user.username)
 
+    user_comments = Comment.objects.filter(user=user)
+
+
     context = {
         'id' : user.phonenum,
         'nick' : profile.nickname,
@@ -91,6 +95,6 @@ def userinfo(request, pk):
         'birthD' : profile.birthD,
         'users' : users,
         'user' : user,
+        'user_comments': user_comments,
     }
     return render(request, 'accounts/myPage.html', context=context)
-
