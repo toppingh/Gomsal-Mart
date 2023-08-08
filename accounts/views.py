@@ -1,10 +1,14 @@
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
+from accounts import models
 from accounts.forms import AccountAuthForm, RegistrationForm
 import sys
+
+from accounts.models import Account
 
 sys.setrecursionlimit(9999)
 
@@ -66,4 +70,27 @@ def get_redirect_if_exists(request):
         if request.GET.get("next"):
             redirect = str(request.GET.get("next"))
     return redirect
+
+def custom_logout(request):
+    print('Logout {}'.format(request.user))
+    logout(request)
+    print(request.user)
+    return redirect('accounts/login_page.html')
+
+@login_required
+def userinfo(request, pk):
+    users = Account.objects.all()
+    user = Account.objects.get(pk=pk)
+    profile = Account.objects.get(username=user.username)
+
+    context = {
+        'id' : user.phonenum,
+        'nick' : profile.nickname,
+        'birthY' : profile.birthY,
+        'birthM' : profile.birthM,
+        'birthD' : profile.birthD,
+        'users' : users,
+        'user' : user,
+    }
+    return render(request, 'accounts/myPage.html', context=context)
 
