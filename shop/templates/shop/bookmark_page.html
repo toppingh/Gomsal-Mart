@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>즐겨찾기 페이지</title>
-  <link rel="stylesheet" href="../css/bookmark_page.css">
-  
+  <link rel="stylesheet" href="{% url 'css/bookmark_page.css' %}">
+  {% block contents %}
 </head>
 <body>
   <!--상단 검색바, 로고-->
   <div class="top">
-    <a href="메인페이지"><img src="../image/logo.png" class="logo"></a> 
+    <a href="메인페이지"><img src="{% url 'image/logo.png' %}" class="logo"></a>
     <div class="Search">
       <input type="text" placeholder="상품을 검색해보세요!">
         <button>
-          <img src="../image/검색.png" width="20px">
+          <img src="{% url 'image/검색.png' %}" width="20px">
         </button>
     </div>
   </div>
@@ -66,6 +67,7 @@
   <div class="footer">
     &nbsp;
   </div>
-  <script src="../js/bookmark_page.js"></script>
+  <script src="{% url 'js/bookmark_page.js' %}"></script>
 </body>
+  {% endblock %}
 </html>

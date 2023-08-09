@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, get_object_or_404
 
+from comment.models import Comment
 from .models import *
 from cart.forms import AddCartForm
 
@@ -17,8 +18,21 @@ def detail(request, id, product_slug=None):
     add_to_cart = AddCartForm(initial={'quantity':1})
     return render(request, 'shop/detail.html', {'product':product, 'add_to_cart':add_to_cart})
 
-#임시 detail
-def detail2(request):
-    return render(request, 'shop/detail.html')
+#임시 detail(with 평균 별점 계산)
+def detail_view(request):
+    # 모든 사용자의 댓글 별점 조회..
+    all_ratings = Comment.objects.filter(rating__isnull=False).values_list('rating', flat=True)
+
+    # 별점의 평균 계산
+    if all_ratings:
+        average_rating = sum(all_ratings) / len(all_ratings)
+    else:
+        average_rating = 0
+
+    context = {
+        'average_rating': average_rating,
+    }
+
+    return render(request, 'shop/detail.html', context)
 
 
