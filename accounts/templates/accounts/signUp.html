@@ -8,7 +8,7 @@
     {% block content %}
 </head>
 <body>
-    <script src="{% static 'js/signUp.js' %}"></script>
+    <script src="{% static 'js/signUp.js' %}" defer></script>
 
 
     <nav class="logo">
@@ -22,36 +22,45 @@
         <div id="mainTitle">회원가입</div>
 
         <div class="name">
-            <div id="title">이름</div>
-            <input name="username" id="name" type="text" placeholder="홍 길 동" required autofocus>
+            <div id="title" maxlength="10">이름</div>
+            <input name="username" id="name" type="text" placeholder="홍 길 동" onkeyup="checkReg(event)" required autofocus>
+            <div id="nameError" class="error">이름이 없습니다</div>
         </div>
 
-        <div class="birth">
-            <div id="title">생년월일</div>
+        <div class="birth" id="birthChk">
+            <p id="title">생년월일</p>
             <input name="birthY" id="birth" type="text" placeholder="19XX" maxlength="4" required>
             <input name="birthM" id="birth" type="text" placeholder="x월" maxlength="2" required>
             <input name="birthD" id="birth" type="text" placeholder="x일" maxlength="2" required>
-            
+            <div id="birthError" class="error">생년월일이 없습니다</div>
         </div>
-
         <div class="phoneNum">
-            <div id="phone">전화번호</div>
+            <div id="title"><p>전화번호</p></div>
             <input name="phonenum" id="phoneNum" type="text" oninput="#" placeholder="010XXXXXXXX" maxlength="11" required>
-        </div>
+            <div id="phoneNumError" class="error">전화번호가 없습니다</div>        </div>
 
         <div class="id">
-            <div id="nickname">별명</div>
+            <div id="title">
+                <p>별명</p>
+            </div>
             <input name="nickname" id="id" type="text" onkeyup="checkReg(event)"  placeholder="2글자 이상 별명을 적어주세요" required>
+            <div id="idError" class="error">별명이 없습니다</div>
         </div>
 
         <div class="password">
-            <div id="pass">비밀번호</div>
+            <div id="title">
+                <p>비밀번호</p>
+            </div>
             <input name="password1" id="password" type="password" placeholder="문자+숫자 8자리를 입력해 주세요." required>
+            <div id="passwordError" class="error">비밀번호를 입력하세요</div>
         </div>
 
-        <div class="password">
-            <div id="pass">비밀번호 확인</div>
+        <div class="passwordCheck">
+            <div id="title">
+                <p>비밀번호 재확인</p>
+            </div>
             <input name="password2" id="password" type="password" placeholder="비밀번호 확인" required>
+            <div id="passwordCheckError" class="error">비밀번호가 일치하지 않습니다</div>
         </div>
 
         <button type="submit" class="agree" id="agree" value="Sign Up">가입하기</button>

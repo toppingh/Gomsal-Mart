@@ -103,8 +103,10 @@ body{
     font-size: 1.2rem;
     font-family: 'HakgyoansimWoojuR';
     font-weight: bold;
-    background-color: rgb(253, 255, 160);
+    background-color: rgb(254, 255, 168);
     letter-spacing: 2px;
+    cursor: pointer;
+
 }
 .middle-info{
     /* background-color: #666; */
@@ -119,6 +121,11 @@ body{
     margin-right: 50px;
     /* background-color: #666; */
     font-size: 1.1rem;
+}
+.basketprice{
+    margin-right: 50px;
+    /* background-color: #666; */
+    font-size: 1.2rem;
     
 }
 .middle-info2{
@@ -139,16 +146,105 @@ body{
 
 /* 상품설명 및 별점*/
 
-.tap_box{
+li {
+    list-style: none;
+}
+
+.tab_menu {
     width: 100%;
     height: 45%;
-    /* background-color: #666; */
+}
+
+.tab {
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+.tab > li:hover{
+    text-decoration: underline 1px;
+    cursor: pointer;
+}
+/* 탭메뉴1,2 */
+.tab_item {
+    /* border: 1px solid rgb(255, 201, 180); */
+    padding: 10px 20px;
+    border-radius: 6px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.1rem;
+    font-weight: bold;
+
+}
+
+.tab_inner_wrap {
+    /* margin-top: 20px; */
+    border-radius: 6px;
+    height: 100%;
+}
+/* 설명 및 별점 */
+.tab_inner {
+    padding: 20px;
+    color: black;
+    font-size: 1rem;
+    display: none;
+}
+/* 탭메뉴1 */
+.tab_item.active {
+    background-color: rgb(255, 184, 160);
+    color: black;
+}
+/* 탭메뉴1-설명 */
+.tab_inner.active {
+    /* border: 1px solid black; */
+    display: block;
+}
+
+/* 별점 및 리뷰 */
+.starPoint{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    width: 100%;
+}
+
+.people{
+    width: 6%;
+}
+.comment > p{
+    width: 80%;
+    margin-left: 10px;
+}
+.stars{
+    width: 20%;
+}
+
+/* .tap_box{
+    width: 100%;
+    height: 45%;
+    background-color: #666;
     overflow: hidden;
 } 
 .tap{
     width: 100%;
     height: 100%;
-    /* background-color: aquamarine; */
+
 }
 .tap>li{
     float: left;
@@ -165,7 +261,6 @@ body{
     width: 50%;
     height: 40px;
     background-color: rgb(253, 253, 253);
-    /* border: solid 0.3px #969696; */
     text-align: center;
     line-height: 30px;
     border-radius: 6px;
@@ -177,13 +272,9 @@ body{
 .notice, .gallery{
     position: absolute;
     border: solid 0.5px #939393;
-    /* background-color: rgb(112, 134, 198); */
     width: 100%;
     border-radius: 6px;
-}
-.wrap{
-    position: absolute;
-    top: -37px;
+    height: 50%;
 }
 .gallery-a{
     position: relative;
@@ -193,13 +284,9 @@ body{
 
 .notice>ul, .gallery>ul{
     width: 100%;
-    height: 200px;
+    height: 100%;
 }
-.gallery{
-    background-color: #ffe8e8;
-    width: 100%;
-    height: auto;
-}
+
 .notice>ul>li{
     margin-top: 15px;
     margin-left: 10px;
@@ -217,10 +304,13 @@ body{
     width: 400px;
     height: 30px;
     list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .gallery>ul>li>a{
-    display: block;
     width: 100%; height: 100px;
+    border: 1px soild black;
     background-color: rgb(255, 247, 90);
 }
 .gallery>ul>li>a:hover{
@@ -235,10 +325,14 @@ body{
     background-color: #ffffff;
     z-index: 2;
 }
+.active{
+    height: 100%;
+}
 .active > a{
     text-decoration:none;
 
-}
+} */
+
 /* 수량확인 */
 .num{
     background-color: #e2e2e2;
@@ -260,7 +354,6 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
 
 }
 
@@ -280,13 +373,12 @@ body{
     width: 80px;
     border-radius: 6px;
 }
-.circle{
+.updown > img{
     border-radius: 30px;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: auto;
     margin: 0 30px;
-    border-style: none;
-    font-size: 1.2rem;
+    cursor: pointer;
 
 }
 
@@ -308,14 +400,14 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
 .cartBtn > button{
     width: 80%;
     background-color: #ffe8e8;
     border-radius: 8px;
     border-style: none;
-    
+    cursor: pointer;
+
 }
 
 .buyBtn{
@@ -325,13 +417,14 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
 .buyBtn > button{
     width: 80%;
     background-color: rgb(255, 184, 160);
     border-radius: 8px;
     border-style: none;
+    cursor: pointer;
+
 }
 .font{
     font-family: 'HakgyoansimWoojuR';   
