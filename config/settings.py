@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'comment',
+    'search',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

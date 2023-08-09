@@ -12,16 +12,20 @@ def main(request):
     return render(request, 'shop/main.html', {'products':products})
 
 # 상품 상세 -> 장바구니 구현 후 장바구니 담기 추가
-def detail(request, id, product_slug=None):
+def detail_view(request, id, product_slug=None):
     product = get_object_or_404(Product, id=id, slug=product_slug)
     # 장바구니 담기 기능 활성화를 위해 뷰 슈정
     add_to_cart = AddCartForm(initial={'quantity':1})
     return render(request, 'shop/detail.html', {'product':product, 'add_to_cart':add_to_cart})
 
 #임시 detail(with 평균 별점 계산)
-def detail_view(request):
+def detail(request, id, product_slug=None):
     # 모든 사용자의 댓글 별점 조회..
     all_ratings = Comment.objects.filter(rating__isnull=False).values_list('rating', flat=True)
+
+    #  추가1 -> 위 뷰 합함
+    product = get_object_or_404(Product, id=id, slug=product_slug)
+    add_to_cart = AddCartForm(initial={'quantity':1})
 
     # 별점의 평균 계산
     if all_ratings:
@@ -31,6 +35,8 @@ def detail_view(request):
 
     context = {
         'average_rating': average_rating,
+        'product': product,
+        'add_to_cart': add_to_cart,
     }
 
     return render(request, 'shop/detail.html', context)

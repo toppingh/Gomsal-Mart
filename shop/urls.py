@@ -6,6 +6,6 @@ app_name = "shop"
 
 urlpatterns = [
     path('', main, name='main'),
-    # path('<product-slug>/<int:id>', detail, name='detail'),
-    path('detail/', detail_view, name='detail2'), #임시입니다..
+    # path('<int:id>/<product_slug>/', detail, name='detail),
+    path('<int:id>/<product_slug>/', detail, name='detail'),
 ]

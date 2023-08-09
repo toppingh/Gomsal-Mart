@@ -2,10 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-# from accounts import forms
-# from accounts.models import Account
-
-
 # Create your models here.
 # 상품 모델
 class Product(models.Model):
@@ -36,11 +32,9 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('shop:product_detail', args=[self.id, self.slug])
+        return reverse('shop:detail', args=[self.id, self.slug])
 
 # 할인
 class Discount(models.Model):
     discount_price = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100000)])
     active = models.BooleanField()
-
-# 별점 추가 예정 (외래키)

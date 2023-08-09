@@ -17,14 +17,14 @@ def add(request, product_id): # 장바구니에 담기
         # 장바구니에 상품과 해당 상품의 수량을 더하고 상세 화면인지 장바구니 화면인지에 따라 방식을 다르게 한다.
         cart.add(product=product, quantity=cd['quantity'], is_update=['is_update'])
 
-    return redirect('cart:detail') # 뷰 동작 시 장바구니 화면을 보여준다.
+    return redirect('cart:cart') # 뷰 동작 시 장바구니 화면을 보여준다.
 
 # 장바구니에서 삭제하기
 def remove(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
-    return redirect('cart:detail') # 뷰 동작 시 장바구니 화면을 보여준다.
+    return redirect('cart:cart') # 뷰 동작 시 장바구니 화면을 보여준다.
 
 # 장바구니 화면을 볼 수 있는 뷰
 def detail(request):
@@ -34,3 +34,4 @@ def detail(request):
     for product in cart:
         # 상품의 수량 (수정) = 폼을 이용해서 상품마다 하나씩 추가하는데 수정하는대로 반영해야 하므로 is_update=True
         product['quantity_form'] = AddCartForm(initial={'quantity':product['quantity'], 'is_update':True})
+    return render(request, 'cart/cart.html', {'cart':cart})
