@@ -13,15 +13,15 @@
     {% csrf_token %}
     {% include 'accounts/login_errors.html' %}
     <div class="logo">
-        <img src="{% static 'image/logo.png' %}" width="25%"></div>
+        <img src="{% static 'image/logoin_logo.png' %}" width="25%"></div>
     <div class="name"><p>전화번호 &nbsp; </p>
-        <input type="text" id="name" name="username" value="{{form.phonenum.value|default_if_none:''}}">
+        <input type="text" placeholder="전화번호를 입력하세요" id="name" name="username" value="{{form.phonenum.value|default_if_none:''}}">
     </div>
     <div class="pw"><p>비밀번호 &nbsp; </p>
-        <input type="password" id="password" name="password" value="{{form.password.value|default_if_none:''}}">
+        <input type="password" placeholder="비밀번호를 입력하세요" id="password" name="password" value="{{form.password.value|default_if_none:''}}">
     </div>
 
-    <div class="change_pw"><a class="change_pw_btn" href="">비밀번호 변경</a></div>
+    <div class="change_pw"><a class="change_pw" href="">비밀번호 변경</a></div>
 
     <div class="btn_container">
         <button class="start_btn" type="submit">
@@ -32,7 +32,7 @@
 </form>
 <div class="first">처음이신가요?</div>
 <div class="btn_container"><a href="{% url 'accounts:signup' %}">
-    <button class="login_btn"><p>회원가입</p></button>
+    <button class="join_btn"><p>회원가입</p></button>
 </a></div>
 {% endblock %}
 </body>
