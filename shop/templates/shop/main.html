@@ -111,9 +111,11 @@
                         <ul class="list">
                             {% for product in products %}
                             <li>
-                                <img src="{{product.image.url}}"> <!--이미지-->
-                                <a href="{{product.get_absolute_url}}"><span class="name">{{product.name}}</span></a>
-                                <span class="price">{{product.price}}원</span>
+                                <a href="{{product.get_absolute_url}}">
+                                    <img src="{{product.image.url}}"> <!--이미지-->
+                                    <span class="name">{{product.name}}</span>
+                                    <span class="price">{{product.price}}원</span>
+                                </a>
                             </li>
                             {% endfor %}
                         </ul>
@@ -123,12 +125,16 @@
         </main>
         <footer>
             <div class="topMenu">
-                <button>배송 조회하기</button>
-                <button>내 정보 확인하기</button>
+                <a href="#"><button>배송 조회하기</button></a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'accounts:userinfo' pk=user.pk %}"><button>내 정보 확인하기</button></a>
+                {% else %}
+                <a href="{% url 'accounts:login' %}"><button>로그인 하기</button></a>
+                {% endif %}
             </div>
             <div class="botMenu">
-                <button>즐겨찾기 가기</button>
-                <button>장바구니 가기</button>
+                <a href=""><button>즐겨찾기 가기</button></a>
+                <a href="{% url 'cart:cart' %}"><button>장바구니 가기</button></a>
             </div>
         </footer>
     </div>
