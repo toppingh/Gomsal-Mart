@@ -1,15 +1,17 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니</title>
-    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 </head>
 <body>
+{% block content %}
     <script src="https://kit.fontawesome.com/d1a3d01a0c.js" crossorigin="anonymous"></script>
     <header class="header">
-        <img src="../image/곰살마트_페이지로고.png" alt="" id="img">
+        <img src="{% static 'image/곰살마트_페이지로고.png' %}" alt="" id="img">
         
         <div class="search">
             <input type="text" placeholder="검색어를 입력하세요">
@@ -18,7 +20,7 @@
 
     </header>
 
-    <form class="orderForm" id="orderForm">
+    <form class="orderForm" id="orderForm" method="post">
         <p>나의 장바구니</p>
 
         <div class="cart" id="cart">
@@ -36,6 +38,7 @@
             </div>
 
             <div class="row-data"> <!-- 장바구니 상품 목록 -->
+
                 <div class="pname"><span>오렌지 주스</span></div>
 
                 <div class="price">
@@ -45,15 +48,15 @@
                 <div class="num">
 
                     <!-- "장바구니 수량 변경" -->
-        
+
                     <div class="updown">
-        
+
                         <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2">
-        
+
                         <span><i class="fa-solid fa-arrow-up"></i></i></span>
         
                         <span><i class="fa-solid fa-arrow-up fa-rotate-180"></i></span>
-        
+
                     </div>
         
                 </div>
@@ -61,9 +64,9 @@
                 <!-- "장바구니 상품 합계" -->
         
                 <div class="sum">40,000원</div>
-        
+
                 <div class="basketcmd"><i class="fa-solid fa-xmark"></i></div>
-        
+
             </div>
 
             <div class="row-data"> <!-- 장바구니 상품 목록 -->
@@ -76,25 +79,25 @@
                 <div class="num">
 
                     <!-- "장바구니 수량 변경" -->
-        
+
                     <div class="updown">
-        
+
                         <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2">
-        
+
                         <span><i class="fa-solid fa-arrow-up"></i></i></span>
-        
+
                         <span><i class="fa-solid fa-arrow-up fa-rotate-180"></i></span>
-        
+
                     </div>
-        
+
                 </div>
-        
+
                 <!-- "장바구니 상품 합계" -->
-        
+
                 <div class="sum">40,000원</div>
-        
+
                 <div class="basketcmd"><i class="fa-solid fa-xmark"></i></div>
-        
+
             </div>
 
             <div class="row-data"> <!-- 장바구니 상품 목록 -->
@@ -107,25 +110,25 @@
                 <div class="num">
 
                     <!-- "장바구니 수량 변경" -->
-        
+
                     <div class="updown">
-        
+
                         <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2">
-        
+
                         <span><i class="fa-solid fa-arrow-up"></i></i></span>
-        
+
                         <span><i class="fa-solid fa-arrow-up fa-rotate-180"></i></span>
-        
+
                     </div>
-        
+
                 </div>
-        
+
                 <!-- "장바구니 상품 합계" -->
-        
+
                 <div class="sum">40,000원</div>
-        
+
                 <div class="basketcmd"><i class="fa-solid fa-xmark"></i></div>
-        
+
             </div>
 
         </div>
@@ -146,6 +149,6 @@
 
     </form>
 
-
+{% endblock %}
 </body>
 </html>
