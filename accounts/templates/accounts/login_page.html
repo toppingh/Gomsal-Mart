@@ -2,38 +2,33 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 페이지</title>
-    <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
-<!--    <script src="{% static 'js/login.js' %}"></script>-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 페이지</title>
+  <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
 </head>
 <body>
 {% block content %}
-<form method="POST" action="{% url 'accounts:login' %}" enctype="multipart/form-data">
+  <!--로고-->
+  <div class="logo">
+    <img src="{% static 'image/login_logo.png' %}" alt="login_logo" width="25%">
+  </div>
+  <!--입력폼-->
+  <form method="post" action="{% url 'accounts:login' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {% include 'accounts/login_errors.html' %}
-    <div class="logo">
-        <img src="{% static 'image/login_logo.png' %}" width="25%"></div>
-    <div class="name"><p>전화번호 &nbsp; </p>
-        <input type="text" placeholder="전화번호를 입력하세요" id="name" name="username" value="{{form.phonenum.value|default_if_none:''}}">
+<!--    {% include 'accounts/login_errors.html' %}-->
+    <div class="name">
+      <input type="text" placeholder="전화번호를 입력하세요" id="name" name="username" value="{{form.phonenum.value|default_if_none:''}}">
     </div>
-    <div class="pw"><p>비밀번호 &nbsp; </p>
-        <input type="password" placeholder="비밀번호를 입력하세요" id="password" name="password" value="{{form.password.value|default_if_none:''}}">
+    <div class="pw">
+      <input type="password" placeholder="비밀번호를 입력하세요" id="password" name="password" value="{{form.password.value|default_if_none:''}}">
     </div>
-
-    <div class="change_pw"><a class="change_pw" href="">비밀번호 변경</a></div>
-
-    <div class="btn_container">
-        <button class="start_btn" type="submit">
-            <p>시작하기</p>
-        </button>
-    </div>
-
-</form>
-<div class="first">처음이신가요?</div>
-<div class="btn_container"><a href="{% url 'accounts:signup' %}">
-    <button class="join_btn"><p>회원가입</p></button>
-</a></div>
+    <!--비밀번호 변경-->
+    <a href="/" class="change_pw">비밀번호 변경</a>
+    <!--하단 버튼-->
+    <button class="start_btn">시작하기</button>
+    <div class="first">처음이신가요?</div>
+    <button class="join_btn">회원가입하기</button>
+  </form>
 {% endblock %}
 </body>
 </html>
