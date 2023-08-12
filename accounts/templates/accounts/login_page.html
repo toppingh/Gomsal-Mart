@@ -1,19 +1,19 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 페이지</title>
-    {% block content %}
     <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
-    <script src="{% static 'js/login.js' %}"></script>
+<!--    <script src="{% static 'js/login.js' %}"></script>-->
 </head>
 <body>
+{% block content %}
 <form method="POST" action="{% url 'accounts:login' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {% include 'accounts/login_errors.html' %}
     <div class="logo">
-        <img src="{% static 'image/logoin_logo.png' %}" width="25%"></div>
+        <img src="{% static 'image/login_logo.png' %}" width="25%"></div>
     <div class="name"><p>전화번호 &nbsp; </p>
         <input type="text" placeholder="전화번호를 입력하세요" id="name" name="username" value="{{form.phonenum.value|default_if_none:''}}">
     </div>

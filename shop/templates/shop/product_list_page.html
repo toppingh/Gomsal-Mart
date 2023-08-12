@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,11 +7,13 @@
   <link rel="stylesheet" href="{% static 'css/product_list_page.css' %}">
 </head>
 <body>
+{% block content %}
   <!--상단 검색바, 로고-->
-  <a href="{% static 'html/main.html"><img src="{% static 'image/logo.png' %}" class="logo"></a>
+  <a href="/"><img src="{% static 'image/logo.png' %}" class="logo" width="300px"></a>
   <div class="search"> <!--검색창-->
-    <form>
-        <input type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
+    <form method="get" action="{% url 'search:searchResult' %}">
+      {% csrf_token %}
+        <input type="text" placeholder="검색할 상품을 입력해주세요" aria-label="Search" name="q"> <!--입력-->
         <div class="btn">
             <button type="submit"> <!--확인btn-->
                 <img src="{% static 'image/searchSubmit.png' %}">
@@ -19,27 +22,30 @@
                 <img src="{% static 'image/mic.png' %}" alt="mic">
             </button>
         </div>
-    </form>            
-</div>
+    </form>
+  </div>
   <!--카테고리 버튼 3개-->
   <div class="btn_container">
     <div class="popularity">
-      <form>
-        <a href="{% static 'html/product_list_page.html' %}">
+      <form method="get">
+        {% csrf_token %}
+        <a href="../html/product_list_page.html">
           <button type="button">인기 많은순</button>
         </a>
       </form>
     </div>
     <div class="fastest">
       <form>
-        <a href="{% static 'html/product_list_page_fast.htm' %}l">
+        {% csrf_token %}
+        <a href="../html/product_list_page_fast.html">
           <button type="button">배송 빠른순</button>
         </a>
       </form>
     </div>
     <div class="cheap">
       <form>
-        <a href="{% static 'html/product_list_page_cheap.html' %}">
+        {% csrf_token %}
+        <a href="../html/product_list_page_cheap.html">
           <button type="button">가격 낮은순</button>
         </a>
       </form>
@@ -47,55 +53,64 @@
   </div>
   <!--상품 이미지, 소개-->
   <div class="product_container">
+    <!--1번째 상품-->
     <div class="product_1">
-      
       <form>
+        {% csrf_token %}
         <button type="button">
-          <img src="{% static 'image/별.png' %}" class="star">
+          <img src="{% static 'image/star.png' %}" class="star">
         </button>
       </form>
-      <img src="{% static 'image/product_grape.jpeg' %}">
+      <img src="{% static 'image/product_grape.jpeg' %}" width="200px">
     </div>
+    <!--2번째 상품-->
     <div class="product_2">
       <img src="">
       <form>
+        {% csrf_token %}
         <button type="button">
-          <img src="{% static 'image/별.png' %}" class="star">
+          <img src="{% static 'image/star.png' %}" class="star">
         </button>
       </form>
     </div>
+    <!--3번째 상품-->
     <div class="product_3">
-      <!--별-->
       <img src="">
       <form>
+        {% csrf_token %}
         <button type="button">
-          <img src="{% static 'image/별.png' %}" class="star">
+          <img src="{% static 'image/star.png' %}" class="star">
         </button>
       </form>
     </div>
+    <!--4번째 상품-->
     <div class="product_4">
       <img src="">
       <form>
-      <button>
-        <img src="{% static 'image/별.png' %}" class="star">
+        {% csrf_token %}
+      <button type="button">
+        <img src="{% static 'image/star.png' %}" class="star">
       </button>
       </form>
     </div>
   </div>
     <!--하단 버튼 두개-->
-<div class="to_btncontainer">
-  <div class="toBookmark_btn">
-    <a href="{% static 'html/bookmark_page.html' %}">
-      <button>
-        즐겨찾기 가기
-      </button>
-    </a>
+  <div class="to_btncontainer">
+    <div class="toBookmark_btn">
+      <a href="../html/bookmark_page.html">
+        <button>
+          즐겨찾기 가기
+        </button>
+      </a>
+    </div>
+    <div class="toCart_btn">
+      <a href="{% url 'cart:detail' %}">
+        <button>
+          장바구니 가기
+        </button>
+      </a>
+    </div>
   </div>
-  <div class="toCart_btn">
-    <a href="{% static 'html/cart.html' %}">
-      <button>
-        장바구니 가기
-      </button>
-    </a>
-  </div>
-</div>
+</body>
+{% endblock %}
+</html>
