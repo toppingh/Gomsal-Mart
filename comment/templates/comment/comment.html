@@ -3,14 +3,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>댓글, 별점 페이지</title>
-  <link rel="stylesheet" href="../css/comment.css">
+  <link rel="stylesheet" href="{% static 'css/comment.css' %}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../js/comment.js"></script>
+  <script src="{% static 'js/comment.js' %}"></script>
 </head>
 <body>
   <!--로고-->
   <div class="logo">
-    <a href="../html/main.html"><img src="../image/logo.png" width="400px"></a>
+    <a href="{% static 'html/main.html' %}"><img src="{% static 'image/logo.png' %}' %}" width="400px"></a>
   </div>
   <!--별점 및 댓글 텍스트-->
   <div class="title">
@@ -19,7 +19,7 @@
   <!--별점 줄 상품-->
   <div class="productContainer">
     <div class="image">
-     <img src="../image/product_grape.jpg" width="250px">
+     <img src="{% static 'image/product_grape.jpg' %}" width="250px">
     </div>
     <div class="text">
       <p>산지직송 포도</p>
@@ -30,11 +30,11 @@
   <div class="bigContainer">
     <!--별점-->
     <div class="starContainer">
-      <img src="../image/star.png" class="star1">
-      <img src="../image/star.png" class="star2">
-      <img src="../image/star.png" class="star3">
-      <img src="../image/star.png" class="star4">
-      <img src="../image/star.png" class="star5">
+      <img src="{% static 'image/star.png' %}" class="star1">
+      <img src="{% static 'image/star.png' %}" class="star2">
+      <img src="{% static 'image/star.png' %}" class="star3">
+      <img src="{% static 'image/star.png' %}" class="star4">
+      <img src="{% static 'image/star.png' %}" class="star5">
     </div>
     <!--댓글-->
     <div class="comment" >

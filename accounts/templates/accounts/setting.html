@@ -3,14 +3,13 @@
 <head>
   {% load static %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="{% static 'js/setting.js' %}"></script>
   <link rel="stylesheet" href="{% static 'css/setting.css' %}">
   <title>설정</title>
   {% block contents %}
 </head>
 <body>
   <!--상단 로고-->
-  <a href="{% static 'shop/main.html' %}"><img src="{% static 'image/logo.png' %}" class="logo" width="300px"></a>
+  <a href="{% url 'shop:main' %}"><img src="{% static 'image/logo.png' %}" class="logo" width="300px"></a>
   <!--인사-->
   <div class="hello">
     <p><span id="userName">{{ request.user.phonenum }} 회원님, 환영합니다!</span></p>

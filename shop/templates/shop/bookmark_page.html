@@ -47,9 +47,9 @@
   <!--검색창, 로고-->
 <a href="{% url 'shop:main' %}"><img src="{% static 'image/logo.png' %}" width="300px" class="logo" ></a><!--로고-->
   <div class="search"> <!--검색창-->
-    <form method="get" action="">
-        {% csrf_token %}
-        <input type="text" placeholder="검색할 상품을 입력해주세요" aria-label="Search" name="q"> <!--입력-->
+    <form method="get" action="{% url 'search:searchResult' %}">
+      {% csrf_token %}
+        <input type="text" placeholder="검색할 상품을 입력해 주세요." aria-label="Search" name="q"> <!--입력-->
         <div class="btn">
             <button type="submit"> <!--확인btn-->
                 <img src="{% static 'image/searchSubmit.png' %}">
