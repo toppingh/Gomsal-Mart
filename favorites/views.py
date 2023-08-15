@@ -9,10 +9,10 @@ from django.http import JsonResponse
 # Create your views here.
 
 
-# @login_required #로그인 고쳐지면 수정
+@login_required
 def favorite_products(request):
     user = request.user
-    favorite_products = user.favorite_products.all()  # 'favorite_products'는 User 모델에서 정의한 related_name
+    favorite_products = user.favorite_products.all()
 
     context = {
         'favorite_products': favorite_products,
