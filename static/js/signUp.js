@@ -6,21 +6,21 @@ const autoHyphen = (target) => {
    };
 
 //별명, 이름 한글만 되도록
-function checkReg(event) {
-    const regExp = /[^ㄱ-ㅎ|가-힣]/g; // 한글만 허용
-    const del = event.target;
-    if (regExp.test(del.value)) {
-      del.value = del.value.replace(regExp, '');
-    }
-};
-const numericInput = document.getElementById("password");
-
-numericInput.addEventListener("input", function(event) {
-    const inputValue = event.target.value;
-    const sanitizedValue = inputValue.replace(/\D/g, ""); // 숫자가 아닌 문자 제거
-    const maxLength = 6;
-    event.target.value = sanitizedValue.substring(0, maxLength); // 최대 길이 제한
-});
+//function checkReg(event) {
+//    const regExp = /[^ㄱ-ㅎ|가-힣]/g; // 한글만 허용
+//    const del = event.target;
+//    if (regExp.test(del.value)) {
+//      del.value = del.value.replace(regExp, '');
+//    }
+//};
+//const numericInput = document.getElementById("password");
+//
+//numericInput.addEventListener("input", function(event) {
+//    const inputValue = event.target.value;
+//    const sanitizedValue = inputValue.replace(/\D/g, ""); // 숫자가 아닌 문자 제거
+//    const maxLength = 6;
+//    event.target.value = sanitizedValue.substring(0, maxLength); // 최대 길이 제한
+//});
 
 
 // 가입하기 눌렀을 때 공백 확인

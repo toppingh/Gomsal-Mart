@@ -26,7 +26,23 @@
     </div>
     <!-- 즐겨찾기 및 가격 정보 -->
     <div class="middle">
-        <button class="star" id="star">즐겨찾기</button>
+
+        <!-- 즐겨찾기 backend 추가 -->
+<form method="post" action="{% url 'toggle_favorite' product_id=product.id %}">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        <button type="submit" class="star" id="star">
+            {% if user in product.favorited_by.all %}
+                즐겨찾기 해제
+            {% else %}
+                즐겨찾기
+            {% endif %}
+        </button>
+    {% else %}
+        <p>즐겨찾기는 <a href="{% url 'accounts:login' %}">로그인</a>후 가능합니다.</p>
+    {% endif %}
+</form>
+        <!-- 즐겨찾기 backend 추가 -->
 
         <div class="middle-info">
             <p>우리 집까지 {{product.delivery_date}}일 소요</p>

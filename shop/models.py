@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+from accounts.models import Account
+from config import settings
+
+
 # Create your models here.
 # 상품 모델
 class Product(models.Model):
@@ -23,6 +27,8 @@ class Product(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    favorited_by = models.ManyToManyField('accounts.Account', related_name='favorited_by_products', blank=True)
 
     class Meta:
         ordering = ['-created_at']
