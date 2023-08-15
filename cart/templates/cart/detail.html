@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load humanize %}
 <html>
 <head>
 	<meta charset="utf-8">
@@ -60,28 +61,28 @@
                         </div>
                     </div>
                     <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="{{item.price}}">{{item.price}}원</div>
+                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="{{item.price}}">{{item.price|intcomma}}원</div>
                         <div class="num">
                             <div class="updown">
-                                <span onclick="javascript:basket.changePNum('{{item.product.id}}', 'up');"><i class="fa-solid fa-arrow-up up"></i></span>
+                                <a href=""><i class="fa-solid fa-arrow-up up"></i></a>
                                 <input type="text" name="p_num{{item.product.id}}" id="p_num{{item.product.id}}" size="2" maxlength="4" class="p_num" value="{{item.quantity}}" onkeyup="javascript:basket.changePNum('{{item.product.id}}', this.value);">
                                 <span onclick="javascript:basket.changePNum('{{item.product.id}}', 'down');"><i class="fa-solid fa-arrow-up fa-rotate-180 down"></i></span>
                             </div>
                         </div>
-                        <div class="sum">{{item.total_price}}원</div>
+                        <div class="sum">{{item.total_price|intcomma}}원</div>
                     </div>
                     <div class="subdiv">
-                        <div class="basketcmd"><a href="" class="abutton" id="del">삭제</a></div>
+                        <div class="basketcmd"><a href="{% url 'cart:remove' item.product.id %}" class="abutton" id="del">삭제</a></div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
             <div class="right-align basketrowcmd">
 <!--                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();" >선택상품삭제</a>-->
-                <a href="{% url 'cart:clear' %}" class="abutton" onclick="javascript:basket.delAllItem();" >장바구니비우기</a>
+                <a href="{% url 'cart:clear' %}" class="abutton">장바구니비우기</a>
             </div>
             <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: {{cart|length}}개</div>
-            <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: {{total_price}}원</div>
+            <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: {{total_price|intcomma}}원</div>
 
             <div class="buy">
                 <button>
@@ -89,7 +90,7 @@
                 </button>
             </div>
 
-        </form>
+    </form>
 
         <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load humanize %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -114,7 +115,7 @@
                                 <a href="{{product.get_absolute_url}}">
                                     <img src="{{product.image.url}}"> <!--이미지-->
                                     <span class="name">{{product.name}}</span>
-                                    <span class="price">{{product.price}}원</span>
+                                    <span class="price">{{product.price|intcomma}}원</span>
                                 </a>
                             </li>
                             {% endfor %}

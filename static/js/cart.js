@@ -40,8 +40,9 @@ let basket = {
     },
     //화면 업데이트
     updateUI: function () {
+        var total_price_formatted = this.totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         document.querySelector('#sum_p_num').textContent = '상품갯수: ' + this.totalCount + '개';
-        document.querySelector('#sum_p_price').textContent = '합계금액: ' + this.totalPrice + '원';
+        document.querySelector('#sum_p_price').textContent = '합계금액: ' + total_price_formatted + '원';
     },
     //개별 수량 변경
     changePNum: function (pos, action) {
@@ -65,8 +66,11 @@ let basket = {
         item.value = newval;
 
         var price = item.parentElement.parentElement.previousElementSibling.firstElementChild.getAttribute('value');
-        item.parentElement.parentElement.nextElementSibling.textContent = (newval * price)+"원";
+        var total_price = newval * price;
         //AJAX 업데이트 전송
+
+        var total_price_formatted = total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        item.parentElement.parentElement.nextElementSibling.textContent = total_price_formatted + "원";
 
         //전송 처리 결과가 성공이면
         this.reCalc();
@@ -76,14 +80,9 @@ let basket = {
         this.reCalc();
         this.updateUI();
     },
-    delItem: function () {
-        event.target.parentElement.parentElement.parentElement.remove();
-        this.reCalc();
-        this.updateUI();
-    }
   }
 
-  // 숫자 3자리 콤마찍기
+//   숫자 3자리 콤마찍기
 //  Number.prototype.formatNumber = function(){
 //    if(this==0) return 0;
 //    let regex = /(^[+-]?\d+)(\d{3})/;
