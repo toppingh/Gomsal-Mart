@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'comment',
     'search',
     'favorites',
+    'shipping',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -14,9 +14,11 @@ def main(request):
 # 상품 상세 -> 장바구니 구현 후 장바구니 담기 추가
 def detail_view(request, id, product_slug=None):
     product = get_object_or_404(Product, id=id, slug=product_slug)
+    comments = Comment.objects.filter(product=product)
+
     # 장바구니 담기 기능 활성화를 위해 뷰 슈정
     add_to_cart = AddCartForm(initial={'quantity':1})
-    return render(request, 'shop/detail.html', {'product':product, 'add_to_cart':add_to_cart})
+    return render(request, 'shop/detail.html', {'product':product, 'add_to_cart':add_to_cart, 'comments':comments})
 
 #임시 detail(with 평균 별점 계산)
 def detail(request, product_id, product_slug=None):

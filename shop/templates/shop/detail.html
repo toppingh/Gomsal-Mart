@@ -72,12 +72,13 @@
                     <img src="{% static 'image/Star 2.png' %}" alt="">
 <!--                    <p class="" type="num">7.8</p>-->
                 </div>
-
+                {% for comment in comments %}
                 <div class="comment">
                     <img src="{% static 'image/people_img.png' %}" alt="" class="people">
-                    <p>당근이 아주 신선하고 좋아요</p>
-                    <img src="{% static 'image/Group 8756.png' %}" alt="" class="stars">
+                    <p>{{ comment.text }}</p>
+                    <p> {{ comment.rating }}</p>
                 </div>
+                {% endfor %}
             </div>
 
         </div>
