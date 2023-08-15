@@ -9,38 +9,16 @@
 	<link rel="stylesheet" href="{% static 'css/bookmark_page.css' %}" />
 	<script type="text/javascript" src="{% static 'js/bookmark_page.js' %}"></script>
 
-    <script>
-    const quantities = document.querySelectorAll('.p_num');
-    const totalAmountElem = document.getElementById('total_amount');
-    const itemCountElem = document.getElementById('item_count');
-
-    // 수량 변경 이벤트 리스너 추가
-    quantities.forEach((quantityInput, index) => {
-        quantityInput.addEventListener('input', () => {
-            updateSummary();
-        });
-    });
-
-    // 합계 업데이트 함수
-    function updateSummary() {
-        let totalAmount = 0;
-        let itemCount = 0;
-
-        quantities.forEach((quantityInput, index) => {
-            const price = parseInt(quantityInput.getAttribute('data-price'));
-            const quantity = parseInt(quantityInput.value);
-            totalAmount += price * quantity;
-            itemCount++;
-        });
-
-        totalAmountElem.textContent = totalAmount.toLocaleString() + '원';
-        itemCountElem.textContent = itemCount;
-    }
-
-    // 초기에 합계 업데이트
-    updateSummary();
-</script>
-
+    <style>
+        a {
+        text-decoration:none;
+        }
+        .img {
+  width: 20%;
+  position: relative; /* 부모 요소 기준으로 위치 조정 */
+  top: 0; /* 원하는 위치로 조정 */
+}
+    </style>
 </head>
 <body>
 {% block content %}
@@ -63,47 +41,41 @@
 
   <!--메인부분-->
     <form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
-            <input type="hidden" name="cmd" value="order">
-
-            <div class="basketdiv" id="basket">
-                <div class="row head">
-                    <div class="subdiv">
-                        <div class="check">선택</div>
-                        <div class="img">이미지</div>
-                        <div class="pname">상품명</div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketprice">가격</div>
-                        <div class="num">수량</div>
-                        <div class="sum">합계</div>
-                    </div>
-                    <div class="subdiv">
-                        <div class="basketcmd">삭제</div>
-                    </div>
-                    <div class="split"></div>
-                </div>
-
+      <input type="hidden" name="cmd" value="order">
+      <div class="basketdiv" id="basket">
+        <div class="row head">
+            <div class="subdiv">
+                <div class="pname">상품명</div>
+            </div>
+            <div class="subdiv">
+                <div class="basketprice">가격</div>
+            </div>
+            <div class="subdiv">
+                <div class="basketcmd">삭제</div>
+            </div>
+            <div class="split"></div>
+        </div>
                 {% for product in favorite_products %}
                 <!--1번째 상품-->
                 <div class="row data">
-                    <a href="{{product.get_absolute_url}}">
                     <div class="subdiv">
-                        <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                        <div class="img"><img src="{{ product.image.url }}" width="80px" alt="{{ product.name }}"></div>
+                        <div class="img">
+                            <a href="{{product.get_absolute_url}}" class="product-link">
+                            <img src="{{ product.image.url }}" width="80px" alt="{{ product.name }}">
+                            </a>
+                        </div>
                         <div class="pname">
-                            <span>{{ product.name }}</span>
+                            <a href="{{product.get_absolute_url}}" class="product-link">
+                            {{ product.name }}
+                            </a>
                         </div>
                     </div></a>
                     <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price{{ forloop.counter }}" class="p_price" value="20000">{{ product.price }}원</div>
-                        <div class="num">
-                            <div class="updown">
-                                <span onclick="javascript:basket.changePNum({{ forloop.counter }});"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2" onkeyup="javascript:basket.changePNum({{ forloop.counter }});">
-                                <span onclick="javascript:basket.changePNum({{ forloop.counter }});"><i class="fas fa-arrow-alt-circle-down down"></i></span>
-                            </div>
+                        <div class="basketprice">
+                            <a href="{{product.get_absolute_url}}" class="product-link">
+                            {{ product.price }}원
+                            </a>
                         </div>
-                        <div class="sum">{{ product.price }}</div>
                     </div>
                     <div class="subdiv">
                         <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
@@ -161,12 +133,6 @@
                 <div>즐겨찾기한 상품이 없습니다.</div>
                 {% endfor %}
             </div>
- <button type="submit" class="abutton">선택상품 업데이트</button>
-        <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">선택상품삭제</a>
-        <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">즐겨찾기비우기</a>
-    </div>
-    <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: <span id="item_count">0</span>개</div>
-    <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: <span id="total_amount">0</span>원</div>
     </form>
 {% endblock %}
 </body>
