@@ -27,6 +27,6 @@ def remove(request, product_id):
     return redirect('cart:cart')
 
 def clear(request):
-    cart = Cart.objects.get_cart(request)
+    cart = Cart(request)
     cart.clear(request)
     return redirect('cart:cart')
