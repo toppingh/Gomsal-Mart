@@ -68,7 +68,6 @@ class Cart(object):
     def clear(self, request):
         request.session[settings.CART_ID] = {}
         request.session.modified = True
-        request.session.save()
 
     # 장바구니 상품의 총 금액
     def get_product_total(self):

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+
 from .cart import Cart
 from shop.models import Product
 
@@ -14,7 +15,7 @@ def product_add(request, product_id):
     if request.method == "POST":
         cart = Cart(request)
         product = Product.objects.get(id=product_id)
-        cart.add(product=product, quantity=1, is_update=False)
+        cart.add(product=product, quantity=1, is_update=True)
         return redirect('cart:cart')
     else:
         return redirect('cart:cart')
@@ -23,7 +24,6 @@ def remove(request, product_id):
     cart = Cart(request)
     product = Product.objects.get(id=product_id)
     cart.remove(product=product)
-
     return redirect('cart:cart')
 
 def clear(request):
