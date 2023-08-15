@@ -86,13 +86,14 @@
                 {% for product in favorite_products %}
                 <!--1번째 상품-->
                 <div class="row data">
+                    <a href="{{product.get_absolute_url}}">
                     <div class="subdiv">
                         <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
                         <div class="img"><img src="{{ product.image.url }}" width="80px" alt="{{ product.name }}"></div>
                         <div class="pname">
                             <span>{{ product.name }}</span>
                         </div>
-                    </div>
+                    </div></a>
                     <div class="subdiv">
                         <div class="basketprice"><input type="hidden" name="p_price" id="p_price{{ forloop.counter }}" class="p_price" value="20000">{{ product.price }}원</div>
                         <div class="num">

@@ -1,24 +1,39 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
 from comment.forms import CommentForm
 from comment.models import Comment
+from shipping.models import Shipping
+from shop.models import Product
 
 
 # Create your views here.
 
-#리뷰 달기
-def add_comment(request):
+#댓글 달기
+@login_required
+def create_comment(request, product_id):
+    user = request.user
+    product = get_object_or_404(Product, id=product_id)
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.user = request.user
+            comment.user = user
+            comment.product = product
             comment.save()
-            return redirect('/')  # 댓글을 단 상품의 상세 페이지로 이동... 추후 수정
+            return redirect('shipping:shipping')
     else:
         form = CommentForm()
-    return render(request, 'comment/add_comment.html', {'form': form})
+
+    context = {
+        'form': form,
+        'product_id': product_id,
+        'product': product,
+    }
+
+    return render(request, 'comment/comment.html', context)
 
 #평균 별점 계산
 def detail_view(request):
@@ -36,3 +51,15 @@ def detail_view(request):
     }
 
     return render(request, 'shop/detail.html', context)
+
+#상품 댓글
+def product_comments(request, product_id):
+    product = Product.objects.get(id=product_id)
+    comments = Comment.objects.filter(product_id=product)
+
+    context = {
+        'product': product,
+        'comments': comments,
+    }
+
+    return render(request, 'shop/detail.html', context=context)

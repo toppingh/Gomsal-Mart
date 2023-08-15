@@ -4,5 +4,5 @@ from . import views
 app_name='comment'
 
 urlpatterns = [
-    path('add_comment/', views.add_comment, name='add_comment'),
+    path('create/<int:product_id>/', views.create_comment, name='create'),
 ]

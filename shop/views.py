@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.db.models import Avg
 from django.shortcuts import render, get_object_or_404
 
 from comment.models import Comment
@@ -14,7 +15,6 @@ def main(request):
 # 상품 상세 -> 장바구니 구현 후 장바구니 담기 추가
 def detail_view(request, id, product_slug=None):
     product = get_object_or_404(Product, id=id, slug=product_slug)
-    comments = Comment.objects.filter(product=product)
 
     # 장바구니 담기 기능 활성화를 위해 뷰 슈정
     add_to_cart = AddCartForm(initial={'quantity':1})
