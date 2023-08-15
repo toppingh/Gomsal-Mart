@@ -23,7 +23,7 @@
       <p>생년월일: <span id="birthdayOutput"> {{ request.user.birthY }} 년 {{ request.user.birthM }} 월 {{ request.user.birthD }} 일</span></p>
     </div>
     <form class="logout">
-      <button>로그아웃</button>
+      <a href="{% url 'accounts:logout' %}">로그아웃</a>
     </form>
     <p><span class="commentOutput">작성한 리뷰 목록</span></p>
     {% for comment in user_comments %}
