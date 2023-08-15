@@ -19,13 +19,12 @@ def detail_view(request, id, product_slug=None):
     return render(request, 'shop/detail.html', {'product':product, 'add_to_cart':add_to_cart})
 
 #임시 detail(with 평균 별점 계산)
-def detail(request, id, product_slug=None):
+def detail(request, product_id, product_slug=None):
     # 모든 사용자의 댓글 별점 조회..
     all_ratings = Comment.objects.filter(rating__isnull=False).values_list('rating', flat=True)
 
     #  추가1 -> 위 뷰 합함
-    product = get_object_or_404(Product, id=id, slug=product_slug)
-    add_to_cart = AddCartForm(initial={'quantity':1})
+    product = get_object_or_404(Product, id=product_id, slug=product_slug)
 
     # 별점의 평균 계산
     if all_ratings:
@@ -36,7 +35,6 @@ def detail(request, id, product_slug=None):
     context = {
         'average_rating': average_rating,
         'product': product,
-        'add_to_cart': add_to_cart,
     }
 
     return render(request, 'shop/detail.html', context)
