@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'search',
     'favorites',
     'shipping',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
