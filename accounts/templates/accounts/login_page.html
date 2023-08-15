@@ -27,8 +27,9 @@
     <!--하단 버튼-->
     <button class="start_btn">시작하기</button>
     <div class="first">처음이신가요?</div>
-    <button class="join_btn">회원가입하기</button>
   </form>
+
+<a href="{% url 'accounts:signup' %}"><button class="join_btn">회원가입하기</button></a>
 {% endblock %}
 </body>
 </html>

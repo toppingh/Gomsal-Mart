@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
 import shop
 from shop.models import Product
@@ -18,7 +19,20 @@ def favorite_products(request):
         'favorite_products': favorite_products,
     }
 
-    return render(request, 'favorites.html', context)
+    return render(request, 'shop/bookmark_page.html', context)
+
+def toggle_favorite(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    product_slug = product.slug
+    user = request.user
+
+    if user.is_authenticated:
+        if product in user.favorite_products.all():
+            user.favorite_products.remove(product)
+        else:
+            user.favorite_products.add(product)
+
+    return redirect(reverse('shop:detail', kwargs={'product_id': product_id, 'product_slug': product_slug}))
 
 
 
