@@ -80,8 +80,7 @@ def custom_logout(request):
 
 @login_required
 def userinfo(request, pk):
-    users = Account.objects.all()
-    user = Account.objects.get(pk=pk)
+    user = request.user
     profile = Account.objects.get(username=user.username)
 
     user_comments = Comment.objects.filter(user=user)
@@ -93,8 +92,7 @@ def userinfo(request, pk):
         'birthY' : profile.birthY,
         'birthM' : profile.birthM,
         'birthD' : profile.birthD,
-        'users' : users,
         'user' : user,
         'user_comments': user_comments,
     }
-    return render(request, 'accounts/myPage.html', context=context)
+    return render(request, 'accounts/setting.html', context=context)

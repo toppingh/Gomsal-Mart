@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="{% static 'js/setting.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/setting.css' %}">
+  <title>설정</title>
+  {% block contents %}
+</head>
+<body>
+  <!--상단 로고-->
+  <a href="{% static 'shop/main.html' %}"><img src="{% static 'image/logo.png' %}" class="logo" width="300px"></a>
+  <!--인사-->
+  <div class="hello">
+    <p><span id="userName">{{ request.user.phonenum }} 회원님, 환영합니다!</span></p>
+  </div>
+  <!-- 유저 개인정보 -->
+  <div class="bigContainer">
+    <div class="nickname">
+      <p>닉네임: <span id="nicknameOutput"> {{ request.user.nickname }} </span></p>
+    </div>
+    <div class="birthday">
+      <p>생년월일: <span id="birthdayOutput"> {{ request.user.birthY }} 년 {{ request.user.birthM }} 월 {{ request.user.birthD }} 일</span></p>
+    </div>
+    <form class="logout">
+      <button>로그아웃</button>
+    </form>
+    <p><span class="commentOutput">작성한 리뷰 목록</span></p>
+    {% for comment in user_comments %}
+    <div class="comment1">
+      <p><span class="comment1Text">{{ comment.text }}</span></p>
+      <p><span class="comment1Date">{{ comment.created_at }}</span></p>
+    </div>
+    {% empty %}
+    <p><span class="comment1Text">작성하신 리뷰가 없습니다.</span></p>
+{% endfor %}
+  </div>
+  {% endblock %}
+</body>
+</html>
