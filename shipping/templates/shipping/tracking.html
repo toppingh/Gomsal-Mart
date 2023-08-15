@@ -8,9 +8,9 @@
 </head>
   {% block contents %}
 <body>
-    <nav class="logo">
+    <a class="logo" href="{% url 'shop:main' %}">
         <img src="{% static 'image/logo.png' %}" alt="">
-    </nav>
+    </a>
 
     <form action="" class="main">
         <div class="box" id="ing">

@@ -8,7 +8,7 @@ from shop.models import Product
 
 class Comment(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE) #작성자
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE) #상품
+    product = models.ForeignKey(Product, on_delete=models.CASCADE) #상품
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     RATING_CHOICES = [

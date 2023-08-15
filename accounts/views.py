@@ -82,8 +82,9 @@ def custom_logout(request):
 def userinfo(request, pk):
     user = request.user
     profile = Account.objects.get(username=user.username)
+    
 
-    user_comments = Comment.objects.filter(user=user)
+    user_comments = Comment.objects.filter(user=request.user)
 
 
     context = {
