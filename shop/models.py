@@ -28,8 +28,6 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    favorited_by = models.ManyToManyField('accounts.Account', related_name='favorited_by_products', blank=True)
-
     class Meta:
         ordering = ['-created_at']
         index_together = [['id', 'slug']]

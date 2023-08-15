@@ -45,9 +45,9 @@
 <body>
 {% block content %}
   <!--검색창, 로고-->
-  <img src="{% static 'image/logo.png' %}" width="300px" class="logo"><!--로고-->
+<a href="{% url 'shop:main' %}"><img src="{% static 'image/logo.png' %}" width="300px" class="logo" ></a><!--로고-->
   <div class="search"> <!--검색창-->
-    <form method="get" action="{% url 'search:searchResult' %}">
+    <form method="get" action="">
         {% csrf_token %}
         <input type="text" placeholder="검색할 상품을 입력해주세요" aria-label="Search" name="q"> <!--입력-->
         <div class="btn">
@@ -94,12 +94,12 @@
                         </div>
                     </div>
                     <div class="subdiv">
-                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="20000">20,000원</div>
+                        <div class="basketprice"><input type="hidden" name="p_price" id="p_price{{ forloop.counter }}" class="p_price" value="20000">{{ product.price }}원</div>
                         <div class="num">
                             <div class="updown">
-                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
-                                <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2" onkeyup="javascript:basket.changePNum(1);">
-                                <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
+                                <span onclick="javascript:basket.changePNum({{ forloop.counter }});"><i class="fas fa-arrow-alt-circle-up up"></i></span>
+                                <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="2" onkeyup="javascript:basket.changePNum({{ forloop.counter }});">
+                                <span onclick="javascript:basket.changePNum({{ forloop.counter }});"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                             </div>
                         </div>
                         <div class="sum">{{ product.price }}</div>
