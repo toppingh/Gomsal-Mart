@@ -69,6 +69,8 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_staff    = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
+    favorite_products = models.ManyToManyField('shop.Product', related_name='favorite_products', blank=True)
+
     objects = MyAccountManager()
 
     USERNAME_FIELD = 'phonenum'
