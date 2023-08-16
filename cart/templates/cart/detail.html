@@ -64,7 +64,7 @@
                         <div class="basketprice"><input type="hidden" name="p_price" id="p_price1" class="p_price" value="{{item.price}}">{{item.price|intcomma}}원</div>
                         <div class="num">
                             <div class="updown">
-                                <a href=""><i class="fa-solid fa-arrow-up up"></i></a>
+                                <span onclick="javascript:basket.changePNum('{{item.product.id}}', 'up');"><i class="fa-solid fa-arrow-up up"></i></span>
                                 <input type="text" name="p_num{{item.product.id}}" id="p_num{{item.product.id}}" size="2" maxlength="4" class="p_num" value="{{item.quantity}}" onkeyup="javascript:basket.changePNum('{{item.product.id}}', this.value);">
                                 <span onclick="javascript:basket.changePNum('{{item.product.id}}', 'down');"><i class="fa-solid fa-arrow-up fa-rotate-180 down"></i></span>
                             </div>

@@ -30,3 +30,9 @@ def clear(request):
     cart = Cart(request)
     cart.clear(request)
     return redirect('cart:cart')
+
+def order_start(request):
+    cart = Cart(request)
+    cart_items = list(cart)
+    total_price = cart.get_product_total()
+    return render(request, 'order/payment.html', {'cart':cart_items, 'total_price':total_price})
