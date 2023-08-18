@@ -60,8 +60,13 @@
                     {% endfor %}
           </div>
           <div class="box3">
+            <div class="edit-comment-form">
+  <p><a href="{% url 'comment:edit' comment.id %}">
+    수정
+  </a></p>
             <p>{{ comment.text }}</p>
           </div>
+</div>
         </div>
     {% empty %}
     <p><span class="comment1Text">작성하신 리뷰가 없습니다.</span></p>

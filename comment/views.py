@@ -63,3 +63,15 @@ def product_comments(request, product_id):
     }
 
     return render(request, 'shop/detail.html', context=context)
+
+#수정
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if request.method == 'POST':
+        comment.text = request.POST['text']
+        comment.save()
+        return redirect('accounts:userinfo', pk=comment.user.id)
+
+    context = {'comment': comment}
+    return render(request, 'comment/edit_comment.html', context)
