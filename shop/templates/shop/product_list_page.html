@@ -13,7 +13,7 @@
   <div class="search"> <!--검색창-->
     <form method="get" action="{% url 'search:searchResult' %}">
       {% csrf_token %}
-        <input type="text" placeholder="{{ query }}" aria-label="Search" name="q"> <!--입력-->
+        <input type="text" placeholder="{% if query %}{{ query }}{% else %}검색어를 입력하세요.{% endif %}" aria-label="Search" name="q"> <!--입력-->
         <div class="btn">
             <button type="submit"> <!--확인btn-->
                 <img src="{% static 'image/searchSubmit.png' %}">

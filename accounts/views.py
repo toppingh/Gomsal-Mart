@@ -81,7 +81,7 @@ def custom_logout(request):
 @login_required
 def userinfo(request, pk):
     user = request.user
-    profile = Account.objects.get(username=user.username)
+    profile = Account.objects.get(pk=request.user.pk)
     
 
     user_comments = Comment.objects.filter(user=request.user)

@@ -49,35 +49,16 @@
                     <a href="{% url 'search:searchResult' %}?q={{ history.query }}">{{ history.query }}</a>
                     <span class="date">{{ history.timestamp|date:"m.d" }}</span>
                 </li>
-
-<!--                <li>-->
-<!--                    <a href="#">product2</a> &lt;!&ndash;검색한 키워드&ndash;&gt;-->
-<!--                    <span class="date">08.08</span> &lt;!&ndash;백엔드 측에서 해당 키워드 검색 날짜 넘겨 받아서 입력&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#"></a> &lt;!&ndash;검색한 키워드&ndash;&gt;-->
-<!--                    <span class="date"></span> &lt;!&ndash;백엔드 측에서 해당 키워드 검색 날짜 넘겨 받아서 입력&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#"></a> &lt;!&ndash;검색한 키워드&ndash;&gt;-->
-<!--                    <span class="date"></span> &lt;!&ndash;백엔드 측에서 해당 키워드 검색 날짜 넘겨 받아서 입력&ndash;&gt;-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#"></a> &lt;!&ndash;검색한 키워드&ndash;&gt;-->
-<!--                    <span class="date"></span> &lt;!&ndash;백엔드 측에서 해당 키워드 검색 날짜 넘겨 받아서 입력&ndash;&gt;-->
-<!--                </li>-->
             {% endfor %}
             </ul>
-
             <div class="none_history hide">
                 최근 검색 기록이 없습니다.
             </div>
-
                 {% endif %}
         </div>
         <div class="footer">
             <ul>
-                <li class="remove_history"><a href="#">검색 기록 삭제</a></li>
+                <li class="remove_history"><a href="">검색 기록 삭제</a></li>
                 <li class="remove_sch_focus"><a href="#">닫기</a></li>
             </ul>
         </div>
@@ -149,6 +130,7 @@
             </div>
         </footer>
     </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 {% endblock %}
 </body>
 </html>

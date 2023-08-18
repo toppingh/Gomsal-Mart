@@ -43,9 +43,14 @@ class MyAccountManager(BaseUserManager):
         return user
 
     # 관리자
-    def create_superuser(self, phonenum, password):
+    def create_superuser(self, nickname, username, phonenum, birthY, birthM, birthD, password):
         user = self.create_user(
             phonenum=phonenum,
+            username=username,
+            nickname=nickname,
+            birthY=birthY,
+            birthM=birthM,
+            birthD=birthD,
             password=password,
 
         )
