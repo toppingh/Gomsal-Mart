@@ -70,6 +70,7 @@ def edit_comment(request, comment_id):
 
     if request.method == 'POST':
         comment.text = request.POST['text']
+        comment.rating = int(request.POST['rating'])
         comment.save()
         return redirect('accounts:userinfo', pk=comment.user.id)
 

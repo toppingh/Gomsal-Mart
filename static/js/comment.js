@@ -19,26 +19,3 @@ $(document).ready(function () {
     }
   });
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-  const stars = document.querySelectorAll(".star");
-  const starImages = [
-    "/static/image/unstar.png",
-    "/static/image/star.png"
-  ];
-
-   const ratingInput = document.getElementById("ratingInput");
-
-  stars.forEach(star => {
-    star.addEventListener("click", function() {
-      const rating = parseInt(this.getAttribute("data-value"));
-
-      stars.forEach((s, index) => {
-        const img = s.querySelector("img");
-        img.src = index < rating ? starImages[1] : starImages[0];
-      });
-
-      ratingInput.value = rating;
-    });
-  });
-});

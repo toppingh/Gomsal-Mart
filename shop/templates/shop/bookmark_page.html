@@ -7,7 +7,11 @@
 	<title>즐겨찾기</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="stylesheet" href="{% static 'css/bookmark_page.css' %}" />
-	<script type="text/javascript" src="{% static 'js/bookmark_page.js' %}"></script>
+	<link href="{% static 'css/schStyle.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/speechToTextStyle.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/speechToTextScript.js' %}" defer type="text/javascript"></script>
+    <script src="{% static 'js/schScript.js' %}" defer type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/bookmark_page.js' %}"></script>
 
     <style>
         a {
@@ -22,22 +26,29 @@
 </head>
 <body>
 {% block content %}
-  <!--검색창, 로고-->
-<a href="{% url 'shop:main' %}"><img src="{% static 'image/logo.png' %}" width="300px" class="logo" ></a><!--로고-->
-  <div class="search"> <!--검색창-->
-    <form method="get" action="{% url 'search:searchResult' %}">
-      {% csrf_token %}
-        <input type="text" placeholder="검색할 상품을 입력해 주세요." aria-label="Search" name="q"> <!--입력-->
-        <div class="btn">
-            <button type="submit"> <!--확인btn-->
-                <img src="{% static 'image/searchSubmit.png' %}">
-            </button>
-            <button type="button">
-                <img src="{% static 'image/mic.png' %}" alt="mic">
-            </button>
-        </div>
-    </form>
-  </div>
+
+<!--로고-->
+        <header> <!--헤더, 로고-->
+            <a href="{% url 'shop:main' %}">
+                <img src="{% static 'image/logo.png' %}" alt="logo">
+            </a>
+        </header>
+        <!--검색창 누르면 생성-->
+    <!--메인-->
+            <div class="search"> <!--검색창-->
+                <form method="get" action="{% url 'search:searchResult' %}">
+                    {% csrf_token %}
+                    <input class="searchBar" type="text" placeholder="검색할 상품을 입력해주세요" name="q"> <!--입력-->
+                    <div class="btn">
+                        <button type="submit"> <!--확인btn-->
+                            <img src="{% static 'image/searchSubmit.png' %}">
+                        </button>
+                        <button type="button" class="sttTrigger">
+                            <img src="{% static 'image/mic.png' %}" alt="mic">
+                        </button>
+                    </div>
+                </form>
+            </div>
 
   <!--메인부분-->
     <form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">

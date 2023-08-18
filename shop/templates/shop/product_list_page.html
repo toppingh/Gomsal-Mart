@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>상품 목록 페이지</title>
   <link rel="stylesheet" href="{% static 'css/product_list_page.css' %}">
+    <link href="{% static 'css/schStyle.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/speechToTextStyle.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/speechToTextScript.js' %}" defer type="text/javascript"></script>
+    <script src="{% static 'js/schScript.js' %}" defer type="text/javascript"></script>
+
 </head>
 <body>
 {% block content %}
   <!--상단 검색바, 로고-->
   <a href="{% url 'shop:main' %}"><img src="{% static 'image/logo.png' %}" class="logo" width="300px"></a>
-  <div class="search"> <!--검색창-->
+  <div class="search">
+      <!--검색창-->
     <form method="get" action="{% url 'search:searchResult' %}">
       {% csrf_token %}
         <input type="text" placeholder="{% if query %}{{ query }}{% else %}검색어를 입력하세요.{% endif %}" aria-label="Search" name="q"> <!--입력-->
@@ -56,22 +62,18 @@
      {% for product in products %}
     <!--1번째 상품-->
     <div class="product_1">
-      <form>
-        {% csrf_token %}
-        <button type="button">
-
-          <form method="post" action="{% url 'favorites:toggle_favorite' product.id %}">
+          <form method="post" action="{% url 'favorites:list_favorite' product.id %}">
     {% csrf_token %}
     {% if user.is_authenticated %}
         <button type="submit" class="star">
             {% if user in product.favorite_products.all %}
                 <img src="{% static 'image/star.png' %}" class="star">
             {% else %}
-                 <img src="{% static 'image/star.png' %}" class="star">
+                 <img src="{% static 'image/unstar.png' %}" class="star">
             {% endif %}
         </button>
     {% else %}
-        <a href="{% url 'accounts:login' %}"><img src="{% static 'image/star.png' %}" class="star" type="submit"></a></p>
+        <a href="{% url 'accounts:login' %}"><img src="{% static 'image/star.png' %}" class="star"></a></p>
     {% endif %}
 </form>
         </button>
