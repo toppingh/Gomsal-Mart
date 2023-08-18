@@ -35,23 +35,23 @@
     <div class="popularity">
       <form method="get">
         {% csrf_token %}
-        <a href="{% static 'shop/product_list_page.html' %}">
+        <a href="{% url 'search:searchResult' %}?q={{ query }}&sort=popularity">
           <button type="button">인기 많은순</button>
         </a>
       </form>
     </div>
     <div class="fastest">
-      <form>
+      <form method="get">
         {% csrf_token %}
-        <a href="{% static 'shop/product_list_page.html' %}">
+        <a href="{% url 'search:searchResult' %}?q={{ query }}&sort=fastest">
           <button type="button">배송 빠른순</button>
         </a>
       </form>
     </div>
     <div class="cheap">
-      <form>
+      <form method="get">
         {% csrf_token %}
-        <a href="{% static 'product_list_page.html' %}">
+        <a href="{% url 'search:searchResult' %}?q={{ query }}&sort=cheap">
           <button type="button">가격 낮은순</button>
         </a>
       </form>
