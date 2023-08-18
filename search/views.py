@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
 
 from search.models import SearchHistory
 from shop.models import Product
@@ -16,3 +17,8 @@ def searchResult(request):
             SearchHistory.objects.create(user=request.user, query=query)
 
     return render(request, 'shop/product_list_page.html', {'query':query, 'products':products})
+
+
+def clear_search_history(request):
+    if request.user.is_authenticated:
+        request.user.searchhistory_set.all().delete()

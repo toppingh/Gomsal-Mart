@@ -8,14 +8,55 @@
 	<title>장바구니</title>
 	<link rel="stylesheet" href="{% static 'css/cart.css' %}" />
     <script src="https://kit.fontawesome.com/d1a3d01a0c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="{% static 'css/schStyle.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/schScript.js' %}" defer type="text/javascript"></script>
 
 </head>
 <body>
 {% block content %}
+    <div class="sch_focus hide">
+        <div class="header_search">
+            <form method="get" action="{% url 'search:searchResult' %}">
+                {% csrf_token %}
+                <input type="text" placeholder="검색할 상품을 입력해주세요" class="focusSearchBar"> <!--입력-->
+                <div class="focus_btn">
+                    <button type="submit"> <!--확인btn-->
+                        <img src="{% static 'image/searchSubmit.png' %}">
+                    </button>
+                </div>
+            </form>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="history">
+            <ul>
+                <span>최근 검색어</span>
+                 {% for history in request.user.searchhistory_set.all|slice:":5" %}
+                <li>
+                    <a href="{% url 'search:searchResult' %}?q={{ history.query }}">{{ history.query }}</a>
+                    <span class="date">{{ history.timestamp|date:"m.d" }}</span>
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="none_history hide">
+                최근 검색 기록이 없습니다.
+            </div>
+                {% endif %}
+        </div>
+        <div class="footer">
+            <ul>
+                <li class="remove_history"><a href="">검색 기록 삭제</a></li>
+                <li class="remove_sch_focus"><a href="#">닫기</a></li>
+            </ul>
+        </div>
+    </div>
   <!--검색창, 로고-->
-  <img src="{% static 'image/delete.png' %}" width="5px" class="logo"><!--로고-->
+  <a href="{% url 'shop:main' %}">
+                <img src="{% static 'image/logo.png' %}" alt="logo">
+            </a>
+<!--로고-->
   <div class="search"> <!--검색창-->
-    <form>
+    <form method="get" action="{% url 'search:searchResult' %}">>
         {% csrf_token %}
         <input type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
         <div class="btn">
@@ -78,7 +119,7 @@
                 {% endfor %}
             </div>
             <div class="right-align basketrowcmd">
-                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();" >선택상품삭제</a>
+                <!-- <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();" >선택상품삭제</a> -->
                 <a href="{% url 'cart:clear' %}" class="abutton">장바구니비우기</a>
             </div>
             <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: {{cart|length}}개</div>
