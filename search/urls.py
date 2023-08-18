@@ -5,5 +5,5 @@ app_name = 'search'
 
 urlpatterns = [
     path('search/', searchResult, name='searchResult'),
-    path('search/', clear_search_history, name='clear_history'),
+    path('clear_history/', clear_search_history, name='clear_history'),
 ]

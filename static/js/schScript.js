@@ -16,6 +16,9 @@ for(let i = 0; i<history.length; i++){
         document.querySelector('.focusSearchBar').value = getString;
     }
 }
+
+
+
 //검색 기록 삭제
 let removeHistory = document.querySelector('.remove_history');
 removeHistory.onclick = function(e){
@@ -26,7 +29,7 @@ removeHistory.onclick = function(e){
      e.preventDefault();
 
         $.ajax({
-            url: '{% url 'search:clear_history' %}',
+            url: '/search/clear_history/',
             type: 'POST',
             dataType: 'json',
             success: function(data) {
