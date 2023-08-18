@@ -59,7 +59,7 @@
         <div class="box" id="done">
             <p class="title">배송완료</p>
 
-            {% for shipping in transit_shippings %}
+            {% for shipping in delivered_shippings %}
             <div class="ingContents">
                 <p class="date">{{ shipping.delivery_date.month }}월 {{ shipping.delivery_date.day }}일</p>
 
@@ -69,14 +69,16 @@
                     </button>
                     <div id="myDropdown2" class="dropdown-content" >
                         {% for product in shipping.products.all %}
-                        <a href="{{ product.get_absolute_url }}">{{ product }}<span href="{% url 'comment:create' product.id %}" class="review">후기 작성</span></a>
+                        <a href="{{ product.get_absolute_url }}">{{ product }}<a href="{% url 'comment:create' product.id %}"><button class="review">후기 작성</button></a></a>
                         {% if not forloop.last %}
                         {% endif %}
                         {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
+                <p></p>
+
             </div>
+            {% endfor %}
         </div>
     </form>
     <script src="{% static 'js/tracking.js' %}"></script>

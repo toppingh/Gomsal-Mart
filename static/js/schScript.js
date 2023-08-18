@@ -1,5 +1,6 @@
 //메인 검색창 클릭 시 포커스 이동
 let searchBar = document.querySelector('.searchBar');
+console.log(searchBar);
 searchBar.onclick = function(){
     let prevInfo = searchBar.value;
     document.querySelector('.sch_focus').classList.remove('hide');
@@ -21,27 +22,11 @@ for(let i = 0; i<history.length; i++){
 
 //검색 기록 삭제
 let removeHistory = document.querySelector('.remove_history');
-removeHistory.onclick = function(e){
+removeHistory.onclick = function(){
     for(let i = 0; i<history.length; i++){
         contents[i].innerText = "";
         date[i].innerText = "";
     }
-     e.preventDefault();
-
-        $.ajax({
-            url: '/search/clear_history/',
-            type: 'POST',
-            dataType: 'json',
-            success: function(data) {
-                if (data.success) {
-                    // 검색 기록이 성공적으로 삭제된 경우에만 메시지 표시
-                    alert('검색 기록이 삭제되었습니다.');
-                }
-            },
-            error: function() {
-                // 오류 처리
-            }
-        });
     document.querySelector('.history ul').classList.add('hide');
     document.querySelector('.none_history').classList.remove('hide');
 }
