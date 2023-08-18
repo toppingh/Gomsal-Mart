@@ -219,13 +219,11 @@ html,body {
         }
 
     .abutton, .abutton:link, .abutton:visited, .abutton:active, input[type=button] {
-        background-color: #949494;
-        color: #ffffff;
+        background-color: #FFF1DB;
+        color: #000000;
         cursor: pointer;
         letter-spacing: -1px;
         padding: 5px 10px;
-        width: 50%;
-        height: 50%;
         word-break: keep-all;
         border-radius: 5px;
         text-decoration: none;
@@ -238,6 +236,8 @@ html,body {
     justify-content: center;
     background-color:#d0d0d0 ;
     color: #000;
+    width: 30%;
+    height : 50%;
 }
 
 .abutton-alt {
@@ -293,7 +293,7 @@ input{
     width: 400px;
     height: 65px;
     margin-top: 10px;
-    border: 0.5px solid gray;
+    border-style: none;
     background-color: #FDAF96;
     letter-spacing: 3px;
     border-radius: 8px;

@@ -30,7 +30,7 @@
     <!--음성 인식 모달창 끝-->
     <div class="sch_focus hide">
         <div class="header_search">
-            <form>
+            <form method="get" action="{% url 'search:searchResult' %}">
                 {% csrf_token %}
                 <input type="text" placeholder="검색할 상품을 입력해주세요" class="focusSearchBar"> <!--입력-->
                 <div class="focus_btn">
