@@ -8,4 +8,13 @@ from .models import Shipping
 def shipping(request):
     user = request.user
     my_shippings = Shipping.objects.filter(user=user)
-    return render(request, 'shipping/tracking.html', {'my_shippings': my_shippings})
+
+    transit_shippings = Shipping.objects.filter(user=user, status='in_transit').select_related('bundle')
+    delivered_shippings = Shipping.objects.filter(user=user, status='delivered').select_related('bundle')
+    context = {
+        'transit_shippings': transit_shippings,
+        'delivered_shippings': delivered_shippings,
+        'my_shippings': my_shippings,
+    }
+
+    return render(request, 'shipping/tracking.html', context)

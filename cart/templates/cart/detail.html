@@ -15,6 +15,13 @@
 </head>
 <body>
 {% block content %}
+<header>
+    <a href="{% url 'shop:main' %}">
+        <img src="{% static 'image/logo.png' %}" alt="logo">
+    </a>
+</header>
+
+<!-- 이전 검색어 -->
     <div class="sch_focus hide">
         <div class="header_search">
             <form method="get" action="{% url 'search:searchResult' %}">
@@ -51,24 +58,24 @@
         </div>
     </div>
   <!--검색창, 로고-->
-  <a href="{% url 'shop:main' %}">
-                <img src="{% static 'image/logo.png' %}" alt="logo">
-            </a>
+
+
 <!--로고-->
   <div class="search"> <!--검색창-->
-    <form method="get" action="{% url 'search:searchResult' %}">>
+    <form method="get" action="{% url 'search:searchResult' %}">
         {% csrf_token %}
-        <input type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
+        <input class="searchBar" type="text" placeholder="검색할 상품을 입력해주세요"> <!--입력-->
         <div class="btn">
             <button type="submit"> <!--확인btn-->
-                <img src="{% static 'image/검색.png' %}">
+                <img src="{% static 'image/searchSubmit.png' %}">
             </button>
-            <button type="button">
-                <img src="{% static 'image/Star 2.png' %}" alt="mic">
+            <button type="button" class="sttTrigger">
+                <img src="{% static 'image/mic.png' %}" alt="mic">
             </button>
         </div>
     </form>
   </div>
+
   <!--메인부분-->
   <div class="title">
     <p>장바구니</p>
@@ -118,12 +125,12 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="right-align basketrowcmd">
+            <div class="basketrowcmd">
                 <!-- <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();" >선택상품삭제</a> -->
                 <a href="{% url 'cart:clear' %}" class="abutton">장바구니비우기</a>
             </div>
-            <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: {{cart|length}}개</div>
-            <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: {{total_price|intcomma}}원</div>
+            <div class="sumcount" id="sum_p_num">상품갯수: {{cart|length}}개</div>
+            <div class="blue summoney" id="sum_p_price">합계금액: {{total_price|intcomma}}원</div>
 
             <a class="buy">
                 <button>

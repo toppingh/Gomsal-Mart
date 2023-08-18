@@ -15,6 +15,7 @@ def searchResult(request):
 
         if request.user.is_authenticated:  # 로그인한 사용자인 경우에만 기록...
             SearchHistory.objects.create(user=request.user, query=query)
+            request.session['search_results'] = list(products.values('id', 'slug'))
 
     return render(request, 'shop/product_list_page.html', {'query':query, 'products':products})
 

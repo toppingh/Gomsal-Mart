@@ -34,8 +34,24 @@ def toggle_favorite(request, product_id):
 
     return redirect(reverse('shop:detail', kwargs={'product_id': product_id, 'product_slug': product_slug}))
 
+@login_required
+def list_favorite(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user = request.user
 
+    if user.is_authenticated:
+        if product in user.favorite_products.all():
+            user.favorite_products.remove(product)
+        else:
+            user.favorite_products.add(product)
 
+    product_slug = product.slug
+
+    # 세션에서 검색 결과를 가져옴
+    search_results = request.session.get('search_results', [])
+    products = Product.objects.filter(id__in=[result['id'] for result in search_results])
+
+    return render(request, 'shop/product_list_page.html', {'query': None, 'products': products})
 def update_summary(request):
     if request.method == 'POST':
         # POST 요청으로부터 데이터 추출

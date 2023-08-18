@@ -16,7 +16,6 @@ tabItem.forEach((tab, idx)=> {
         tabInner[idx].classList.add('active')
     })
 })
-
 //수량변경
 function count(type){
     //결과 표시할 요소

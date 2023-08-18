@@ -34,9 +34,12 @@ def detail(request, product_id, product_slug=None):
     else:
         average_rating = 0
 
+    add_to_cart = AddCartForm(initial={'quantity': 1})
+
     context = {
         'average_rating': average_rating,
         'product': product,
+        'add_to_cart': add_to_cart,
     }
 
     return render(request, 'shop/detail.html', context)

@@ -1,4 +1,4 @@
-     //버튼 클릭 시 다음으로 이동
+//버튼 클릭 시 다음으로 이동
 let wdu = document.querySelector('.paymentList'),
     list = document.querySelector('.paymentList ul'),
     lists = document.querySelectorAll('.process'),
