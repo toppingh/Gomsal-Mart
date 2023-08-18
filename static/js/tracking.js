@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+/* 토글 보이도록*/
 function myFunction(event) {
     event.preventDefault();
     document.getElementById("myDropdown1").classList.toggle("show");
@@ -30,6 +31,7 @@ function myFunction2(event) {
     event.preventDefault();
     document.getElementById("myDropdown2").classList.toggle("show");
 }
+
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
